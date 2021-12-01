@@ -4,7 +4,6 @@ import { MessageTypes as MessageI, Link, CustomCompMessage, LinkParams } from '.
 
 import Message from '../components/Widget/components/Conversation/components/Messages/components/Message';
 import Snippet from '../components/Widget/components/Conversation/components/Messages/components/Snippet';
-import QuickButton from '../components/Widget/components/Conversation/components/QuickButtons/components/QuickButton';
 
 import { MESSAGES_TYPES, MESSAGE_SENDER, MESSAGE_BOX_SCROLL_DURATION } from '../constants';
 
@@ -53,14 +52,6 @@ export function createComponentMessage(component: ElementType, props: any, showA
   };
 }
 
-export function createQuickButton(button: { label: string, value: string | number }) {
-  return {
-    component: QuickButton,
-    label: button.label,
-    value: button.value
-  };
-}
-
 // TODO: Clean functions and window use for SSR
 
 function sinEaseOut(timestamp: any, begining: any, change: any, duration: any) {
@@ -68,7 +59,7 @@ function sinEaseOut(timestamp: any, begining: any, change: any, duration: any) {
 }
 
 /**
- * 
+ *
  * @param {*} target scroll target
  * @param {*} scrollStart
  * @param {*} scroll scroll distance

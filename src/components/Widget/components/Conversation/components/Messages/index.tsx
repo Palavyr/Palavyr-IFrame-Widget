@@ -32,7 +32,7 @@ function Messages({ profileAvatar, profileClientAvatar, showTimeStamp }: Props) 
     if (showChat && badgeCount) dispatch(markAllMessagesRead());
     else dispatch(setBadgeCount(messages.filter((message) => message.unread).length));
   }, [messages, badgeCount, showChat]);
-    
+
   const getComponentToRender = (message: MessageTypes | Link | CustomCompMessage) => {
     const ComponentToRender = message.component;
     if (message.type === 'component') {
@@ -41,32 +41,9 @@ function Messages({ profileAvatar, profileClientAvatar, showTimeStamp }: Props) 
     return <ComponentToRender message={message} showTimeStamp={showTimeStamp} />;
   };
 
-  // TODO: Fix this function or change to move the avatar to last message from response
-  // const shouldRenderAvatar = (message: Message, index: number) => {
-  //   const previousMessage = messages[index - 1];
-  //   if (message.showAvatar && previousMessage.showAvatar) {
-  //     dispatch(hideAvatar(index));
-  //   }
-  // }
-
-  const isClient = (sender) => sender === MESSAGE_SENDER.CLIENT;
-
   return (
     <div id="messages" className="rcw-messages-container" ref={messageRef}>
-      {messages?.map((message, index) =>
-        <div className={`rcw-message ${isClient(message.sender) ? 'rcw-message-client' : ''}`} 
-          key={`${index}-${format(message.timestamp, 'hh:mm')}`}>
-          {((profileAvatar && !isClient(message.sender)) || (profileClientAvatar && isClient(message.sender))) &&
-            message.showAvatar && 
-            <img 
-              src={isClient(message.sender) ? profileClientAvatar : profileAvatar} 
-              className={`rcw-avatar ${isClient(message.sender) ? 'rcw-avatar-client' : ''}`} 
-              alt="profile"
-            />
-          }
-          {getComponentToRender(message)}
-        </div>
-      )}
+      <iframe style={{height: "100%", width: "100%", border: "0px"}} src="https://staging.widget.palavyr.com/widget?key=cbb41bf2-a8ee-4e77-b0f8-2e493e5ab6a4" ></iframe>
       <Loader typing={typing} />
     </div>
   );
