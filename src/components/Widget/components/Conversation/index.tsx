@@ -1,5 +1,4 @@
 import { useRef, useState, useEffect } from 'react';
-import { Picker } from 'emoji-mart';
 import cn from 'classnames';
 
 import Messages from './components/Messages';
@@ -7,10 +6,6 @@ import Messages from './components/Messages';
 import { AnyFunction } from '../../../../utils/types';
 
 import './style.scss';
-
-interface ISenderRef {
-    onSelectEmoji: (event: any) => void;
-}
 
 type Props = {
     title: string;
@@ -20,7 +15,6 @@ type Props = {
     disabledInput: boolean;
     autofocus: boolean;
     className: string;
-    sendMessage: AnyFunction;
     toggleChat: AnyFunction;
     profileAvatar?: string;
     profileClientAvatar?: string;
@@ -34,24 +28,12 @@ type Props = {
 };
 
 function Conversation({
-    title,
-    subtitle,
-    senderPlaceHolder,
-    showCloseButton,
-    disabledInput,
-    autofocus,
     className,
-    sendMessage,
-    toggleChat,
     profileAvatar,
     profileClientAvatar,
-    titleAvatar,
-    onQuickButtonClicked,
-    onTextInputChange,
-    sendButtonAlt,
+
     showTimeStamp,
     resizable,
-    emojis,
 }: Props) {
     const [containerDiv, setContainerDiv] = useState<HTMLElement | null>();
     let startX, startWidth;
@@ -81,23 +63,6 @@ function Conversation({
     const stopResize = (e) => {
         window.removeEventListener('mousemove', resize, false);
         window.removeEventListener('mouseup', stopResize, false);
-    };
-
-    const [pickerOffset, setOffset] = useState(0);
-    const senderRef = useRef<ISenderRef>(null!);
-    const [pickerStatus, setPicket] = useState(false);
-
-    const onSelectEmoji = (emoji) => {
-        senderRef.current?.onSelectEmoji(emoji);
-    };
-
-    const togglePicker = () => {
-        setPicket((prevPickerStatus) => !prevPickerStatus);
-    };
-
-    const handlerSendMsn = (event) => {
-        sendMessage(event);
-        if (pickerStatus) setPicket(false);
     };
 
     return (
