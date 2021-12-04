@@ -1,5 +1,4 @@
 import { useRef, useState } from 'react';
-import Loader from './components/Loader';
 import './styles.scss';
 
 type Props = {
@@ -9,22 +8,18 @@ type Props = {
 function IframeWindow({ src }: Props) {
     const [loading, setLoading] = useState(true);
 
-    const frameRef = useRef<HTMLIFrameElement | null>(null);
-
     const hideLoader = () => {
-        setLoading(!loading);
+        setLoading(false);
     };
 
     return (
         <div id="messages" className="rcw-messages-container">
-            <iframe
-                onLoad={hideLoader}
-                ref={frameRef}
-                id="palavyr-iframe"
-                style={{ height: '100%', width: '100%', border: '0px' }}
-                src={src}
-            ></iframe>
-            <Loader typing={loading} />
+            {loading && (
+                <div className="ring">Loading
+                <span></span>
+              </div>
+            )}
+            <iframe onLoad={hideLoader} style={{ height: '100%', width: '100%', border: '0px' }} src={src}></iframe>
         </div>
     );
 }
