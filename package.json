@@ -2,7 +2,8 @@
   "name": "palavyr-chat-widget",
   "version": "3.1.0",
   "description": "Palavyr Chat Widget",
-  "main": "lib/index.js",
+  "main": "dist/palavyr-chat-widget.js",
+  "module": "src/palavyr-chat-widget.js",
   "repository": "git@github.com:Jo-Jo-Roof-Improvement/jojo-roof-website.git",
   "contributors": [
     "Martín Callegari <martin.callegari@wolox.com.ar>",

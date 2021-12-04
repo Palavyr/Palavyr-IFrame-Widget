@@ -10,7 +10,6 @@ type Props = {
     src: string;
     showCloseButton?: boolean;
     fullScreenMode?: boolean;
-    autofocus?: boolean;
     launcher?: AnyFunction;
     handleToggle?: AnyFunction;
     launcherOpenLabel?: string;
