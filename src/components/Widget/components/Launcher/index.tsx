@@ -1,7 +1,5 @@
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
 import cn from 'classnames';
-
-import Badge from './components/Badge';
 import { GlobalState } from '../../../../store/types';
 
 import './style.scss';
@@ -11,15 +9,13 @@ const close = require('../../../../../assets/clear-button.svg') as string;
 
 type Props = {
     toggle: () => void;
-    chatId: string;
     openLabel: string;
     closeLabel: string;
     closeImg: string;
     openImg: string;
-    showBadge?: boolean;
 };
 
-function Launcher({ toggle, chatId, openImg, closeImg, openLabel, closeLabel, showBadge }: Props) {
+function Launcher({ toggle, openImg, closeImg, openLabel, closeLabel }: Props) {
     const { showChat } = useSelector((state: GlobalState) => ({
         showChat: state.behavior.showChat,
     }));
@@ -31,9 +27,8 @@ function Launcher({ toggle, chatId, openImg, closeImg, openLabel, closeLabel, sh
     return (
         <button
             type="button"
-            className={cn('rcw-launcher', { 'rcw-hide-sm': showChat })}
+            className={cn('rcw-launcher', { 'rcw-hide-sm': showChat, 'rcw-animation': !showChat })}
             onClick={toggleChat}
-            aria-controls={chatId}
         >
             {showChat ? (
                 <img src={closeImg || close} className="rcw-close-launcher" alt={openLabel} />

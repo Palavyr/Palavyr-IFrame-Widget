@@ -13,60 +13,34 @@ import FullScreenPreview from './components/FullScreenPreview';
 import './style.scss';
 
 type Props = {
-    title: string;
-    titleAvatar?: string;
-    subtitle: string;
     onToggleConversation: AnyFunction;
-    senderPlaceHolder: string;
-    profileAvatar?: string;
-    profileClientAvatar?: string;
-    showCloseButton: boolean;
     fullScreenMode: boolean;
-    autofocus: boolean;
     customLauncher?: AnyFunction;
-    onTextInputChange?: (event: any) => void;
-    chatId: string;
     launcherOpenLabel: string;
     launcherCloseLabel: string;
     launcherCloseImg: string;
     launcherOpenImg: string;
-    sendButtonAlt: string;
-    showTimeStamp: boolean;
     imagePreview?: boolean;
-    zoomStep?: number;
-    showBadge?: boolean;
     resizable?: boolean;
-    emojis?: boolean;
+    src: string;
+    zoomStep?: number;
 };
 
 function WidgetLayout({
-    title,
-    titleAvatar,
-    subtitle,
+    src,
     onToggleConversation,
-    senderPlaceHolder,
-    profileAvatar,
-    profileClientAvatar,
-    showCloseButton,
     fullScreenMode,
-    autofocus,
+    zoomStep,
     customLauncher,
-    onTextInputChange,
-    chatId,
     launcherOpenLabel,
     launcherCloseLabel,
     launcherCloseImg,
     launcherOpenImg,
-    sendButtonAlt,
-    showTimeStamp,
     imagePreview,
-    zoomStep,
-    showBadge,
     resizable,
-    emojis,
 }: Props) {
     const dispatch = useDispatch();
-    const { dissableInput, showChat, visible } = useSelector((state: GlobalState) => ({
+    const { showChat, visible } = useSelector((state: GlobalState) => ({
         showChat: state.behavior.showChat,
         dissableInput: state.behavior.disabledInput,
         visible: state.preview.visible,
@@ -122,37 +96,21 @@ function WidgetLayout({
                 'rcw-close-widget-container ': !showChat,
             })}
         >
-            {showChat && (
-                <Conversation
-                    title={title}
-                    subtitle={subtitle}
-                    senderPlaceHolder={senderPlaceHolder}
-                    profileAvatar={profileAvatar}
-                    profileClientAvatar={profileClientAvatar}
-                    toggleChat={onToggleConversation}
-                    showCloseButton={showCloseButton}
-                    disabledInput={dissableInput}
-                    autofocus={autofocus}
-                    titleAvatar={titleAvatar}
-                    className={showChat ? 'active' : 'hidden'}
-                    onTextInputChange={onTextInputChange}
-                    sendButtonAlt={sendButtonAlt}
-                    showTimeStamp={showTimeStamp}
-                    resizable={resizable}
-                    emojis={emojis}
-                />
-            )}
+            <Conversation
+                src={src}
+                showChat={showChat}
+                className={showChat ? 'active' : 'hidden'}
+                resizable={resizable}
+            />
             {customLauncher
                 ? customLauncher(onToggleConversation)
                 : !fullScreenMode && (
                       <Launcher
                           toggle={onToggleConversation}
-                          chatId={chatId}
                           openLabel={launcherOpenLabel}
                           closeLabel={launcherCloseLabel}
                           closeImg={launcherCloseImg}
                           openImg={launcherOpenImg}
-                          showBadge={showBadge}
                       />
                   )}
             {imagePreview && <FullScreenPreview fullScreenMode={fullScreenMode} zoomStep={zoomStep} />}

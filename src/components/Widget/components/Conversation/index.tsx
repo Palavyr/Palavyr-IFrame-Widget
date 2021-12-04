@@ -1,40 +1,16 @@
-import { useRef, useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import cn from 'classnames';
-
-import Messages from './components/Messages';
-
-import { AnyFunction } from '../../../../utils/types';
-
+import IframeWindow from './components/Messages';
 import './style.scss';
 
 type Props = {
-    title: string;
-    subtitle: string;
-    senderPlaceHolder: string;
-    showCloseButton: boolean;
-    disabledInput: boolean;
-    autofocus: boolean;
+    showChat: boolean;
     className: string;
-    toggleChat: AnyFunction;
-    profileAvatar?: string;
-    profileClientAvatar?: string;
-    titleAvatar?: string;
-    onQuickButtonClicked?: AnyFunction;
-    onTextInputChange?: (event: any) => void;
-    sendButtonAlt: string;
-    showTimeStamp: boolean;
     resizable?: boolean;
-    emojis?: boolean;
+    src: string;
 };
 
-function Conversation({
-    className,
-    profileAvatar,
-    profileClientAvatar,
-
-    showTimeStamp,
-    resizable,
-}: Props) {
+function Conversation({ className, src, resizable, showChat }: Props) {
     const [containerDiv, setContainerDiv] = useState<HTMLElement | null>();
     let startX, startWidth;
 
@@ -67,18 +43,14 @@ function Conversation({
 
     return (
         <div
+            style={{ visibility: showChat ? 'visible' : 'hidden' }}
             id="rcw-conversation-container"
             onMouseDown={initResize}
             className={cn('rcw-conversation-container', className)}
             aria-live="polite"
         >
             {resizable && <div className="rcw-conversation-resizer" />}
-
-            <Messages
-                profileAvatar={profileAvatar}
-                profileClientAvatar={profileClientAvatar}
-                showTimeStamp={showTimeStamp}
-            />
+            <IframeWindow src={src} />
         </div>
     );
 }

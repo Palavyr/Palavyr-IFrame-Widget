@@ -1,35 +1,32 @@
-import { useEffect, useRef } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-
-import { GlobalState } from '../../../../../../store/types';
-
+import { useRef, useState } from 'react';
 import Loader from './components/Loader';
 import './styles.scss';
 
 type Props = {
-    showTimeStamp: boolean;
-    profileAvatar?: string;
-    profileClientAvatar?: string;
+    src: string;
 };
 
-function Messages({ profileAvatar, profileClientAvatar, showTimeStamp }: Props) {
-    const dispatch = useDispatch();
-    const { typing, showChat } = useSelector((state: GlobalState) => ({
-        typing: state.behavior.messageLoader,
-        showChat: state.behavior.showChat,
-    }));
+function IframeWindow({ src }: Props) {
+    const [loading, setLoading] = useState(true);
 
-    const messageRef = useRef<HTMLDivElement | null>(null);
+    const frameRef = useRef<HTMLIFrameElement | null>(null);
+
+    const hideLoader = () => {
+        setLoading(!loading);
+    };
 
     return (
-        <div id="messages" className="rcw-messages-container" ref={messageRef}>
+        <div id="messages" className="rcw-messages-container">
             <iframe
+                onLoad={hideLoader}
+                ref={frameRef}
+                id="palavyr-iframe"
                 style={{ height: '100%', width: '100%', border: '0px' }}
-                src="https://staging.widget.palavyr.com/widget?key=cbb41bf2-a8ee-4e77-b0f8-2e493e5ab6a4"
+                src={src}
             ></iframe>
-            <Loader typing={typing} />
+            <Loader typing={loading} />
         </div>
     );
 }
 
-export default Messages;
+export default IframeWindow;
