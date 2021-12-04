@@ -7,7 +7,7 @@ const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 
 module.exports = {
-    entry: './index.js',
+    entry: './palavyr-chat-widget.js',
     output: {
         path: path.join(__dirname, '/dist'),
         filename: 'palavyr-chat-widget.js',
