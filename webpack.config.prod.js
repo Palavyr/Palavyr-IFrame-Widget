@@ -11,7 +11,7 @@ module.exports = {
     entry: './src/Widget.tsx',
     output: {
         path: path.join(__dirname, '/lib'),
-        filename: 'palavyr-chat-widget.js',
+        filename: 'index.js',
         libraryTarget: 'commonjs2',
     },
     resolve: {
