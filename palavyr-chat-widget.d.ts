@@ -1,6 +1,5 @@
-// Type definitions for react-chat-widget v3.0.0
-// Project: <https://github.com/Wolox/react-chat-widget>
 // Definitions by: Martín Callegari <https://github.com/mcallegari10>
+// Modified by Paul Gradie
 
 import { ElementType } from 'react';
 

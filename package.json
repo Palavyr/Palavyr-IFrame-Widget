@@ -1,7 +1,7 @@
 {
   "name": "palavyr-chat-widget",
   "private": false,
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Palavyr Chat Widget - heavily inspired by the Wolox react-chat-widget, but gutted to presetn an iFrame",
   "main": "./lib/palavyr-chat-widget.js",
   "repository": "git@github.com:Jo-Jo-Roof-Improvement/jojo-roof-website.git",
@@ -10,7 +10,7 @@
     "Paul Gradie <paul.e.gradie@gmail.com"
   ],
   "license": "MIT",
-  "types": "./dist/index.d.ts",
+  "types": "lib/palavyr-chat-widget.d.ts",
   "scripts": {
     "start": "webpack serve --config webpack.config.dev.js",
     "build": "webpack --config ./webpack.config.prod.js",
