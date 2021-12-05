@@ -10,7 +10,7 @@ const TerserPlugin = require('terser-webpack-plugin');
 module.exports = {
     entry: './src/Widget.tsx',
     output: {
-        path: path.join(__dirname, '/lib'),
+        path: path.join(__dirname, '/dist'),
         filename: 'index.js',
         libraryTarget: 'commonjs2',
     },
