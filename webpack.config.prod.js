@@ -3,21 +3,16 @@
 const webpack = require('webpack');
 const path = require('path');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
+const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 
-const TerserPlugin = require("terser-webpack-plugin");
-
+const TerserPlugin = require('terser-webpack-plugin');
 
 module.exports = {
-    entry: './palavyr-chat-widget.js',
+    entry: './src/Widget.tsx',
     output: {
-        path: path.join(__dirname, '/dist'),
+        path: path.join(__dirname, '/lib'),
         filename: 'palavyr-chat-widget.js',
-        library: {
-            name: 'palavyr-chat-widget',
-            type: 'umd',
-        },
-        clean: true,
+        libraryTarget: 'commonjs2',
     },
     resolve: {
         extensions: ['.tsx', '.ts', '.js'],
@@ -94,9 +89,6 @@ module.exports = {
         },
     },
     optimization: {
-        minimizer: [
-            new TerserPlugin(),
-            new CssMinimizerPlugin(),
-        ],
+        minimizer: [new TerserPlugin(), new CssMinimizerPlugin()],
     },
 };

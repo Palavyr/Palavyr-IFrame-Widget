@@ -1,6 +1,6 @@
 import { Component } from 'react';
 
-import { Widget } from '../palavyr-chat-widget';
+import Widget from '../src/Widget';
 
 export default class App extends Component {
     componentDidMount() {}
