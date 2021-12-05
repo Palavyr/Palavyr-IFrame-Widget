@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react';
+import { useState } from 'react';
 import './styles.scss';
 
 type Props = {
@@ -15,9 +15,10 @@ function IframeWindow({ src }: Props) {
     return (
         <div id="messages" className="rcw-messages-container">
             {loading && (
-                <div className="ring">Loading
-                <span></span>
-              </div>
+                <div className="rcw-ring">
+                    Loading
+                    <span></span>
+                </div>
             )}
             <iframe onLoad={hideLoader} style={{ height: '100%', width: '100%', border: '0px' }} src={src}></iframe>
         </div>
