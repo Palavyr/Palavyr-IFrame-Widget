@@ -8,7 +8,7 @@ const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
 
 module.exports = {
-    entry: './src/Widget.tsx',
+    entry: './src/index.tsx',
     output: {
         path: path.join(__dirname, '/dist'),
         filename: 'index.js',
@@ -17,7 +17,7 @@ module.exports = {
     resolve: {
         extensions: ['.tsx', '.ts', '.js'],
     },
-    target: 'web',
+    target: 'node',
     mode: 'production',
     module: {
         rules: [
