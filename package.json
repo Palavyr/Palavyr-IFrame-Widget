@@ -1,7 +1,7 @@
 {
   "name": "palavyr-chat-widget",
   "private": false,
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Palavyr Chat Widget - heavily inspired by the Wolox react-chat-widget, but gutted to present an iFrame",
   "repository": "git@github.com:Palavyr/Palavyr-IFrame-Widget.git",
   "contributors": [
