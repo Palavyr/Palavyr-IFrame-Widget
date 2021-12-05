@@ -1,6 +1,5 @@
 import { Component } from 'react';
-
-import Widget from '../src/Widget';
+import Widget from '../src/index';
 
 export default class App extends Component {
     componentDidMount() {}

@@ -13,14 +13,17 @@
     margin-top: 10px;
     cursor: pointer;
     width: 60px;
-
     &:focus {
         outline: none;
+    }
+    &:hover {
+        background-color: $turqois-2;
     }
 }
 
 .rcw-open-launcher {
     @include animation(0, 0.5s, rotation-rl);
+
 }
 
 .rcw-close-launcher {

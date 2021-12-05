@@ -27,6 +27,7 @@ function Launcher({ toggle, openImg, closeImg, openLabel, closeLabel }: Props) {
     return (
         <button
             type="button"
+            style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}
             className={cn('rcw-launcher', { 'rcw-hide-sm': showChat, 'rcw-animation': !showChat })}
             onClick={toggleChat}
         >
