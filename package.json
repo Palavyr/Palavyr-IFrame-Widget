@@ -1,10 +1,10 @@
 {
   "name": "palavyr-chat-widget",
   "private": false,
-  "version": "0.0.2",
-  "description": "Palavyr Chat Widget - heavily inspired by the Wolox react-chat-widget, but gutted to presetn an iFrame",
+  "version": "0.0.4",
+  "description": "Palavyr Chat Widget - heavily inspired by the Wolox react-chat-widget, but gutted to present an iFrame",
   "main": "./lib/palavyr-chat-widget.js",
-  "repository": "git@github.com:Jo-Jo-Roof-Improvement/jojo-roof-website.git",
+  "repository": "git@github.com:Palavyr/Palavyr-IFrame-Widget.git",
   "contributors": [
     "Martín Callegari <martin.callegari@wolox.com.ar>",
     "Paul Gradie <paul.e.gradie@gmail.com"
