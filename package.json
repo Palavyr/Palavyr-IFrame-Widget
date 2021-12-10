@@ -1,13 +1,9 @@
 {
-  "name": "palavyr-chat-widget",
+  "name": "palavyr-iframe-widget",
   "private": false,
-  "version": "0.1.5",
-  "description": "Palavyr Chat Widget - heavily inspired by the Wolox react-chat-widget, but gutted to present an iFrame",
+  "version": "0.1.6",
+  "description": "Palavyr IFrame Widget - a react component that allows you to place a chat widget compatible with Palavyr in your website",
   "repository": "git@github.com:Palavyr/Palavyr-IFrame-Widget.git",
-  "contributors": [
-    "Martín Callegari <martin.callegari@wolox.com.ar>",
-    "Paul Gradie <paul.e.gradie@gmail.com"
-  ],
   "license": "MIT",
   "main": "./dist/index.js",
   "module": "./dist/index.js",
@@ -20,6 +16,8 @@
     "build": "webpack --config ./webpack.config.prod.js"
   },
   "keywords": [
+    "palavyr",
+    "iframe",
     "react",
     "chat",
     "widget",

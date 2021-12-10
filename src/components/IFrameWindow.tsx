@@ -1,15 +1,13 @@
-import './styles.scss';
+import './IFrameWindow-styles.scss';
 
-type Props = {
+export interface IFrameWindowProps {
     src: string;
-};
+}
 
-function IframeWindow({ src }: Props) {
+export const IFrameWindow = ({ src }: IFrameWindowProps) => {
     return (
         <div id="messages" className="rcw-messages-container">
             <iframe style={{ height: '100%', width: '100%', border: '0px' }} src={src}></iframe>
         </div>
     );
-}
-
-export default IframeWindow;
+};

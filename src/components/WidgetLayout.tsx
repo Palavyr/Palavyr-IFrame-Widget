@@ -5,15 +5,12 @@ import cn from 'classnames';
 import { GlobalState } from 'src/store/types';
 import { AnyFunction } from 'src/utils/types';
 
-import Conversation from './components/Conversation';
-import Launcher from './components/Launcher';
-import FullScreenPreview from './components/FullScreenPreview';
+import './WidgetLayout-style.scss';
+import { IFrameContainer } from './IFrameContainer';
+import { Launcher } from './Launcher';
 
-import './style.scss';
-
-type Props = {
+type WidgetLayoutProps = {
     onToggleConversation: AnyFunction;
-    fullScreenMode: boolean;
     customLauncher?: AnyFunction;
     launcherOpenLabel: string;
     launcherCloseLabel: string;
@@ -22,14 +19,11 @@ type Props = {
     imagePreview?: boolean;
     resizable?: boolean;
     src: string;
-    zoomStep?: number;
 };
 
-function WidgetLayout({
+export const WidgetLayout = ({
     src,
     onToggleConversation,
-    fullScreenMode,
-    zoomStep,
     customLauncher,
     launcherOpenLabel,
     launcherCloseLabel,
@@ -37,45 +31,42 @@ function WidgetLayout({
     launcherOpenImg,
     imagePreview,
     resizable,
-}: Props) {
+}: WidgetLayoutProps) => {
     const { showChat, visible } = useSelector((state: GlobalState) => ({
         showChat: state.behavior.showChat,
-        dissableInput: state.behavior.disabledInput,
         visible: state.preview.visible,
     }));
 
     useEffect(() => {
-        document.body.setAttribute('style', `overflow: ${visible || fullScreenMode ? 'hidden' : 'auto'}`);
-    }, [fullScreenMode, visible]);
+        document.body.setAttribute('style', `overflow: ${visible ? 'hidden' : 'auto'}`);
+    }, [visible]);
+
+    console.log(visible);
 
     return (
         <div
             className={cn('rcw-widget-container', {
-                'rcw-full-screen': fullScreenMode,
                 'rcw-previewer': imagePreview,
                 'rcw-close-widget-container ': !showChat,
             })}
         >
-            <Conversation
+            <IFrameContainer
                 src={src}
                 showChat={showChat}
                 className={showChat ? 'active' : 'hidden'}
                 resizable={resizable}
             />
-            {customLauncher
-                ? customLauncher(onToggleConversation)
-                : !fullScreenMode && (
-                      <Launcher
-                          toggle={onToggleConversation}
-                          openLabel={launcherOpenLabel}
-                          closeLabel={launcherCloseLabel}
-                          closeImg={launcherCloseImg}
-                          openImg={launcherOpenImg}
-                      />
-                  )}
-            {imagePreview && <FullScreenPreview fullScreenMode={fullScreenMode} zoomStep={zoomStep} />}
+            {customLauncher ? (
+                customLauncher(onToggleConversation)
+            ) : (
+                <Launcher
+                    toggle={onToggleConversation}
+                    openLabel={launcherOpenLabel}
+                    closeLabel={launcherCloseLabel}
+                    closeImg={launcherCloseImg}
+                    openImg={launcherOpenImg}
+                />
+            )}
         </div>
     );
-}
-
-export default WidgetLayout;
+};

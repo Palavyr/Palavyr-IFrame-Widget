@@ -1,16 +1,16 @@
 import { useState, useEffect } from 'react';
 import cn from 'classnames';
-import IframeWindow from './components/Messages';
-import './style.scss';
+import './IFrameContainer-style.scss';
+import { IFrameWindow } from './IFrameWindow';
 
-type Props = {
+export interface ConversationProps {
     showChat: boolean;
     className: string;
     resizable?: boolean;
     src: string;
-};
+}
 
-function Conversation({ className, src, resizable, showChat }: Props) {
+export const IFrameContainer = ({ className, src, resizable, showChat }: ConversationProps) => {
     const [containerDiv, setContainerDiv] = useState<HTMLElement | null>();
     let startX, startWidth;
 
@@ -50,9 +50,7 @@ function Conversation({ className, src, resizable, showChat }: Props) {
             aria-live="polite"
         >
             {resizable && <div className="rcw-conversation-resizer" />}
-            <IframeWindow src={src} />
+            <IFrameWindow src={src} />
         </div>
     );
-}
-
-export default Conversation;
+};
