@@ -1,7 +1,7 @@
 {
   "name": "palavyr-iframe-widget",
   "private": false,
-  "version": "0.1.6",
+  "version": "0.1.7",
   "description": "Palavyr IFrame Widget - a react component that allows you to place a chat widget compatible with Palavyr in your website",
   "repository": "git@github.com:Palavyr/Palavyr-IFrame-Widget.git",
   "license": "MIT",
