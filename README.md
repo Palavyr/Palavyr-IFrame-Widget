@@ -1,5 +1,4 @@
-# Palavyr-IFrame-Widget
-Palavyr-chat-Widget
+# palavyr-chat-widget
 
 ## Usage
 
@@ -17,6 +16,12 @@ This is project has it's origins in the <a href="https://github.com/Wolox/react-
 1. The message handling logic
 2. The container that renders the message handling logic
 
-I have found each of these - individually - pieces of valuable prior art that these folks were nice enough to open source. I had a use case for the container, but the requirement excluded a need for the message handling logic. The container worked really nicely, so I've taken it and gutted out the message handling logic. Instead, the container renders an `iframe`, where the source is passed in through props. I have also made modifications on this code, and it continues to be open source. Many thanks to the Wolox team. I didn't feel this would be an appropriate extension to the parent project since it involves a great deal of code deletion, code modification, and file reorganization.
+I have found each of these pieces - individually - quite valuabl, and the creators were nice enough to open source. I had a use case for the container, but the requirement excluded a need for the message handling logic. The container worked really nicely, so I've taken it and gutted out the message handling logic. Instead, the container renders an `iframe`, where the source is passed in through props.
 
-The package is primarily intended to be used as the widget container for the <a href="https://www.palavyr.com">Palavry chat bot service</a>.
+I have made modifications to this code, and it of course remails source. Many thanks to the Wolox team for their initial design and implementation.
+
+I didn't feel this would be an appropriate extension to the parent project since it involves a great deal of code deletion, code modification, and file reorganization.
+
+Furthermore, the package is primarily intended to be used as the widget container for the <a href="https://www.palavyr.com">Palavry chat bot service</a>. So if you're building a site and would like to integrate Palavyr, you can use this to launch the widget in your customer's website.
+
+For more information about Palavyr, please visit us at www.palavyr.com
