@@ -16,7 +16,7 @@ This is project has it's origins in the <a href="https://github.com/Wolox/react-
 1. The message handling logic
 2. The container that renders the message handling logic
 
-I have found each of these pieces - individually - quite valuabl, and the creators were nice enough to open source. I had a use case for the container, but the requirement excluded a need for the message handling logic. The container worked really nicely, so I've taken it and gutted out the message handling logic. Instead, the container renders an `iframe`, where the source is passed in through props.
+I have found each of these pieces - individually - quite valuable. The creators were also nice enough to open source their work. I had a use case for the container, but the requirement excluded a need for the message handling logic. The container worked really nicely, so I've taken it and gutted out the message handling logic. Instead, the container renders an `iframe`, where the source is passed in through props.
 
 I have made modifications to this code, and it of course remails source. Many thanks to the Wolox team for their initial design and implementation.
 

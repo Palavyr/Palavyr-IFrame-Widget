@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { IframeHTMLAttributes, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import cn from 'classnames';
 
@@ -8,8 +8,9 @@ import { AnyFunction } from 'src/utils/types';
 import './WidgetLayout-style.scss';
 import { IFrameContainer } from './IFrameContainer';
 import { Launcher } from './Launcher';
+import { IFrameWindowProps } from './IFrameWindow';
 
-type WidgetLayoutProps = {
+export interface WidgetLayoutProps extends IFrameWindowProps {
     onToggleConversation: AnyFunction;
     customLauncher?: AnyFunction;
     launcherOpenLabel: string;
@@ -19,7 +20,7 @@ type WidgetLayoutProps = {
     imagePreview?: boolean;
     resizable?: boolean;
     src: string;
-};
+}
 
 export const WidgetLayout = ({
     src,
@@ -31,6 +32,7 @@ export const WidgetLayout = ({
     launcherOpenImg,
     imagePreview,
     resizable,
+    ...iframeProps
 }: WidgetLayoutProps) => {
     const { showChat, visible } = useSelector((state: GlobalState) => ({
         showChat: state.behavior.showChat,
@@ -41,13 +43,11 @@ export const WidgetLayout = ({
         document.body.setAttribute('style', `overflow: ${visible ? 'hidden' : 'auto'}`);
     }, [visible]);
 
-    console.log(visible);
-
     return (
         <div
-            className={cn('rcw-widget-container', {
-                'rcw-previewer': imagePreview,
-                'rcw-close-widget-container ': !showChat,
+            className={cn('pcw-widget-container', {
+                'pcw-previewer': imagePreview,
+                'pcw-close-widget-container ': !showChat,
             })}
         >
             <IFrameContainer
@@ -55,6 +55,7 @@ export const WidgetLayout = ({
                 showChat={showChat}
                 className={showChat ? 'active' : 'hidden'}
                 resizable={resizable}
+                {...iframeProps}
             />
             {customLauncher ? (
                 customLauncher(onToggleConversation)

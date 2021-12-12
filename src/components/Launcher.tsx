@@ -32,13 +32,13 @@ export const Launcher = ({ toggle, openImg, closeImg, openLabel, closeLabel }: L
         <button
             type="button"
             style={styles}
-            className={cn('rcw-launcher', { 'rcw-hide-sm': showChat, 'rcw-animation': !showChat })}
+            className={cn('pcw-launcher', { 'pcw-hide-sm': showChat, 'pcw-animation': !showChat })}
             onClick={toggleChat}
         >
             {showChat ? (
-                <img src={closeImg || close} className="rcw-close-launcher" alt={openLabel} />
+                <img src={closeImg || close} className="pcw-close-launcher" alt={openLabel} />
             ) : (
-                <img src={openImg || openLauncher} className="rcw-open-launcher" alt={closeLabel} />
+                <img src={openImg || openLauncher} className="pcw-open-launcher" alt={closeLabel} />
             )}
         </button>
     );

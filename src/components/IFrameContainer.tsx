@@ -1,21 +1,21 @@
 import { useState, useEffect } from 'react';
 import cn from 'classnames';
 import './IFrameContainer-style.scss';
-import { IFrameWindow } from './IFrameWindow';
+import { IFrameWindow, IFrameWindowProps } from './IFrameWindow';
 
-export interface ConversationProps {
+export interface ConversationProps extends IFrameWindowProps {
     showChat: boolean;
     className: string;
     resizable?: boolean;
     src: string;
 }
 
-export const IFrameContainer = ({ className, src, resizable, showChat }: ConversationProps) => {
+export const IFrameContainer = ({ className, src, resizable, showChat, ...iframeProps }: ConversationProps) => {
     const [containerDiv, setContainerDiv] = useState<HTMLElement | null>();
     let startX, startWidth;
 
     useEffect(() => {
-        const containerDiv = document.getElementById('rcw-conversation-container');
+        const containerDiv = document.getElementById('pcw-conversation-container');
         setContainerDiv(containerDiv);
     }, []);
 
@@ -44,13 +44,13 @@ export const IFrameContainer = ({ className, src, resizable, showChat }: Convers
     return (
         <div
             style={{ visibility: showChat ? 'visible' : 'hidden' }}
-            id="rcw-conversation-container"
+            id="pcw-conversation-container"
             onMouseDown={initResize}
-            className={cn('rcw-conversation-container', className)}
+            className={cn('pcw-conversation-container', className)}
             aria-live="polite"
         >
-            {resizable && <div className="rcw-conversation-resizer" />}
-            <IFrameWindow src={src} />
+            {resizable && <div className="pcw-conversation-resizer" />}
+            <IFrameWindow src={src} {...iframeProps} />
         </div>
     );
 };

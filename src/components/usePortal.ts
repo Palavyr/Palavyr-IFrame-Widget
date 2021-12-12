@@ -15,9 +15,9 @@ function usePortal(): HTMLDivElement {
 
     useEffect(() => {
         // Look for existing target dom element to append to
-        const existingParent: HTMLDivElement | null = document.querySelector('#rcw-image-preview');
+        const existingParent: HTMLDivElement | null = document.querySelector('#pcw-image-preview');
         // Parent is either a new root or the existing dom element
-        const parentElem: HTMLDivElement = existingParent || createRootElement('#rcw-image-preview');
+        const parentElem: HTMLDivElement = existingParent || createRootElement('#pcw-image-preview');
 
         // If there is no existing DOM element, add a new one.
         if (!existingParent) {

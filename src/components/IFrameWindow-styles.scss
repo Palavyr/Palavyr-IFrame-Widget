@@ -1,21 +1,21 @@
 @import 'variables/colors';
 @import 'common';
 
-.rcw-messages-container {
+.pcw-messages-container {
     background-color: $white;
     height: 70vh;
     overflow-y: none;
     -webkit-overflow-scrolling: touch;
 }
 
-.rcw-full-screen {
-    .rcw-messages-container {
+.pcw-full-screen {
+    .pcw-messages-container {
         @include messages-container-fs;
     }
 }
 
 @media screen and (max-width: 800px) {
-    .rcw-messages-container {
+    .pcw-messages-container {
         @include messages-container-fs;
     }
 }
