@@ -4,7 +4,6 @@ import { WidgetLayout } from './components/WidgetLayout';
 import store from './store';
 import { isWidgetOpened } from './store/dispatcher';
 import { AnyFunction } from './utils/types';
-import { IframeHTMLAttributes } from 'react';
 import { IFrameWindowProps } from './components/IFrameWindow';
 
 export interface WidgetProps extends IFrameWindowProps {

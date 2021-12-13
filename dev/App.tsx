@@ -1,4 +1,8 @@
 import { Widget } from '../src/index';
-const testSrc = 'https://staging.widget.palavyr.com/widget?key=cbb41bf2-a8ee-4e77-b0f8-2e493e5ab6a4';
 
-export const App = () => <Widget src={testSrc} resizable id="" />;
+export const App = () => {
+    const src = process.env.PALAVYR_TEST_API_KEY as string;
+    console.log(src);
+
+    return <Widget src={src} resizable />;
+};
