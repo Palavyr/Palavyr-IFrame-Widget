@@ -6,6 +6,9 @@ import paul from './p.jpg';
 export const App = () => {
     return (
         <>
+            <div style={{ color: "white", fontWeight: 800, textAlign: 'center', top: "0px", padding: "2rem", height: '60px', backgroundColor: 'rebeccapurple' }}>
+                <h1 style={{fontSize: "32pt"}}>Palavyr Chat Widget Demo</h1>
+            </div>
             <FixedWidget />
             <AlternateContentWidget />
             <ControlledWidget />
