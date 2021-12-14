@@ -1,0 +1,51 @@
+.button {
+    background-color: #3e1f70;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 60px;
+    text-align: center;
+    font-weight: bolder;
+    font-size: larger;
+    border-radius: 15px;
+}
+
+.button:hover {
+    opacity: 0.8;
+    background-color: black;
+    color: white;
+}
+
+.container {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    padding-top: 2rem;
+    cursor: pointer;
+}
+
+.alternate-content {
+    overflow: hidden;
+    height: 100%;
+    background-color: purple;
+    color: white;
+    text-align: center;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 15px;
+    border: 3px solid white;
+}
+
+.alternate-content img {
+
+    height: auto;
+    padding: 1rem;
+    border-radius: 15px;
+    border: 3px solid white;
+}

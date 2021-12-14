@@ -1,16 +1,25 @@
 import { useState, useEffect } from 'react';
-import cn from 'classnames';
 import './IFrameContainer-style.scss';
-import { IFrameWindow, IFrameWindowProps } from './IFrameWindow';
+import { IFrameWindow, OptionalSrcProps } from './IFrameWindow';
+import { AltContent } from 'src/utils/types';
+import classNames from 'classnames';
 
-export interface ConversationProps extends IFrameWindowProps {
-    showChat: boolean;
+export interface ConversationProps extends OptionalSrcProps {
+    widgetOpenState: boolean;
     className: string;
     resizable?: boolean;
-    src: string;
+    src?: string;
+    alternateContent?: AltContent;
 }
 
-export const IFrameContainer = ({ className, src, resizable, showChat, ...iframeProps }: ConversationProps) => {
+export const IFrameContainer = ({
+    className,
+    src,
+    alternateContent,
+    resizable,
+    widgetOpenState,
+    ...iframeProps
+}: ConversationProps) => {
     const [containerDiv, setContainerDiv] = useState<HTMLElement | null>();
     let startX, startWidth;
 
@@ -41,16 +50,21 @@ export const IFrameContainer = ({ className, src, resizable, showChat, ...iframe
         window.removeEventListener('mouseup', stopResize, false);
     };
 
+    const style: React.CSSProperties = {
+        borderRadius: '10px',
+        minWidth: '355px',
+        maxWidth: '100vw',
+        position: 'relative',
+        boxShadow: '0px 3px 15px rgba(0, 0, 0, 0.2)',
+        visibility: widgetOpenState ? 'visible' : 'hidden',
+        ...iframeProps.style,
+    };
+
     return (
-        <div
-            style={{ visibility: showChat ? 'visible' : 'hidden' }}
-            id="pcw-conversation-container"
-            onMouseDown={initResize}
-            className={cn('pcw-conversation-container', className)}
-            aria-live="polite"
-        >
+        <div style={style} onMouseDown={initResize} className={classNames('pcw-conversation-container', className)}>
             {resizable && <div className="pcw-conversation-resizer" />}
-            <IFrameWindow src={src} {...iframeProps} />
+            {alternateContent}
+            {alternateContent === undefined && src && <IFrameWindow src={src} {...iframeProps} />}
         </div>
     );
 };

@@ -2,12 +2,32 @@
 @import 'common';
 
 .pcw-widget-container {
+    display: flex;
+    flex-direction: column;
+    margin: 0 20px 20px 0;
+    overflow: hidden;
+}
+
+.pcw-widget-container-fixed {
     bottom: 0;
     display: flex;
     flex-direction: column;
     margin: 0 20px 20px 0;
     position: fixed;
     right: 0;
+    overflow: hidden;
+    z-index: 9999;
+}
+
+.pcw-widget-container-fixed-left {
+    bottom: 0;
+    display: flex;
+    flex-direction: column;
+    margin-left: 20px;
+    margin-bottom: 20px;
+    position: fixed;
+    left: 0;
+    overflow: hidden;
     z-index: 9999;
 }
 
@@ -22,7 +42,6 @@
         @include widget-container-fs;
     }
 }
-
 
 .pcw-previewer .pcw-message-img {
     cursor: pointer;

@@ -1,13 +1,10 @@
-import { toggleChat } from './store/actions';
-import { Provider, useDispatch } from 'react-redux';
 import { WidgetLayout } from './components/WidgetLayout';
-import store from './store';
-import { isWidgetOpened } from './store/dispatcher';
-import { AnyFunction } from './utils/types';
-import { IFrameWindowProps } from './components/IFrameWindow';
+import { AltContent, AnyFunction } from './utils/types';
+import { OptionalSrcProps } from './components/IFrameWindow';
+import { useEffect, useState } from 'react';
+import { WidgetContext } from './context/widgetContext';
 
-export interface WidgetProps extends IFrameWindowProps {
-    src: string;
+export interface WidgetProps extends OptionalSrcProps {
     customLauncher?: AnyFunction;
     handleToggle?: AnyFunction;
     launcherOpenLabel?: string;
@@ -15,9 +12,16 @@ export interface WidgetProps extends IFrameWindowProps {
     launcherCloseImg?: string;
     launcherOpenImg?: string;
     resizable?: boolean;
+    startOpen?: boolean;
+    alternateContent?: AltContent;
+    fixedPosition?: boolean;
+    open?: boolean;
+    alignLeft?: boolean;
+    closeComponent?: React.ReactNode;
+    launchComponent?: React.ReactNode;
 }
 
-const WidgetInner = ({
+export const Widget = ({
     src,
     customLauncher = undefined,
     handleToggle = undefined,
@@ -26,34 +30,57 @@ const WidgetInner = ({
     launcherCloseImg = '',
     launcherOpenImg = '',
     resizable = true,
+    startOpen = false,
+    alternateContent = undefined,
+    fixedPosition = true,
+    open = undefined,
+    alignLeft = false,
+    closeComponent,
+    launchComponent,
     ...iframeProps
 }: WidgetProps) => {
-    const dispatch = useDispatch();
+    const [widgetOpenState, setWidgetOpenState] = useState(false);
+    const [visible, setVisible] = useState(undefined);
+
+    useEffect(() => {
+        setWidgetOpenState(startOpen);
+    }, []);
+
+    useEffect(() => {
+        if (open && !widgetOpenState) {
+            setWidgetOpenState(true);
+        } else {
+            setWidgetOpenState(false);
+        }
+    }, [open]);
 
     const toggleConversation = () => {
-        dispatch(toggleChat());
-        handleToggle ? handleToggle(isWidgetOpened()) : null;
+        setWidgetOpenState(!widgetOpenState);
+        handleToggle ? handleToggle(widgetOpenState) : null;
     };
 
-    return (
-        <WidgetLayout
-            {...iframeProps}
-            src={src}
-            onToggleConversation={toggleConversation}
-            customLauncher={customLauncher}
-            launcherOpenLabel={launcherOpenLabel}
-            launcherCloseLabel={launcherCloseLabel}
-            launcherCloseImg={launcherCloseImg}
-            launcherOpenImg={launcherOpenImg}
-            resizable={resizable}
-        />
-    );
-};
+    if (fixedPosition) {
+        resizable = false;
+    }
 
-export const Widget = (props: WidgetProps) => {
     return (
-        <Provider store={store}>
-            <WidgetInner {...props} />
-        </Provider>
+        <WidgetContext.Provider value={{ widgetOpenState, visible, toggleConversation }}>
+            <WidgetLayout
+                {...iframeProps}
+                src={src}
+                alternateContent={alternateContent}
+                onToggleConversation={toggleConversation}
+                customLauncher={customLauncher}
+                launcherOpenLabel={launcherOpenLabel}
+                launcherCloseLabel={launcherCloseLabel}
+                launcherCloseImg={launcherCloseImg}
+                launcherOpenImg={launcherOpenImg}
+                closeComponent={closeComponent}
+                launchComponent={launchComponent}
+                resizable={resizable}
+                fixedPosition={fixedPosition}
+                alignLeft={alignLeft}
+            />
+        </WidgetContext.Provider>
     );
 };

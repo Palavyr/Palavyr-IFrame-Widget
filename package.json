@@ -1,7 +1,7 @@
 {
   "name": "palavyr-chat-widget",
   "private": false,
-  "version": "0.1.13",
+  "version": "0.1.14",
   "description": "Palavyr Chat Widget - a react component that allows you to place a chat widget compatible with Palavyr in your website.",
   "repository": "git@github.com:Palavyr/palavyr-chat-widget.git",
   "license": "MIT",
@@ -24,9 +24,7 @@
     "javascript"
   ],
   "dependencies": {
-    "classnames": "^2.2.6",
-    "react-redux": "^7.2.4",
-    "redux": "^4.1.0"
+    "classnames": "^2.3.1"
   },
   "devDependencies": {
     "@babel/cli": "^7.8.4",
@@ -39,7 +37,6 @@
     "@types/classnames": "^2.2.10",
     "@types/react": "^16.9.23",
     "@types/react-dom": "^16.9.5",
-    "@types/react-redux": "^7.1.7",
     "@typescript-eslint/eslint-plugin": "^4.22.0",
     "autoprefixer": "^8.2.0",
     "babel-loader": "^8.2.2",

@@ -3,7 +3,6 @@
 const webpack = require('webpack');
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const autoprefixer = require('autoprefixer');
 const Dotenv = require('dotenv-webpack');
 
 module.exports = {
@@ -58,7 +57,7 @@ module.exports = {
                         options: {
                             implementation: require('node-sass'),
                             sassOptions: {
-                                includePaths: [path.resolve(__dirname, 'src/scss/')],
+                                includePaths: [path.resolve(__dirname, 'src/scss/'), path.resolve(__dirname, 'dev/')],
                             },
                         },
                     },

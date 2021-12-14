@@ -1,14 +1,17 @@
 import { IframeHTMLAttributes } from 'react';
 import './IFrameWindow-styles.scss';
 
-export interface IFrameWindowProps extends React.DetailedHTMLProps<IframeHTMLAttributes<HTMLIFrameElement>, HTMLIFrameElement> {
+export interface BaseFrameProps
+    extends React.DetailedHTMLProps<IframeHTMLAttributes<HTMLIFrameElement>, HTMLIFrameElement> {}
+
+export interface OptionalSrcProps extends BaseFrameProps {
+    src?: string;
+}
+
+export interface DefiniteFrameProps extends BaseFrameProps {
     src: string;
 }
 
-export const IFrameWindow = ({ src, ...iframeProps }: IFrameWindowProps) => {
-    return (
-        <div id="messages" className="pcw-messages-container">
-            <iframe style={{ height: '100%', width: '100%', border: '0px' }} src={src} {...iframeProps}></iframe>
-        </div>
-    );
+export const IFrameWindow = ({ src, ...iframeProps }: DefiniteFrameProps) => {
+    return <iframe {...iframeProps} style={{ height: '100%', width: '100%', border: '0px' }} src={src}></iframe>;
 };

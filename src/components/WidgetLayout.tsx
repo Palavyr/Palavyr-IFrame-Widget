@@ -1,16 +1,15 @@
-import { IframeHTMLAttributes, useEffect } from 'react';
-import { useSelector } from 'react-redux';
-import cn from 'classnames';
+import { useContext, useEffect } from 'react';
+import classNames from 'classnames';
 
-import { GlobalState } from 'src/store/types';
-import { AnyFunction } from 'src/utils/types';
+import { AltContent, AnyFunction } from 'src/utils/types';
 
 import './WidgetLayout-style.scss';
 import { IFrameContainer } from './IFrameContainer';
 import { Launcher } from './Launcher';
-import { IFrameWindowProps } from './IFrameWindow';
+import { OptionalSrcProps } from './IFrameWindow';
+import { WidgetContext } from '../context/widgetContext';
 
-export interface WidgetLayoutProps extends IFrameWindowProps {
+export interface WidgetLayoutProps extends OptionalSrcProps {
     onToggleConversation: AnyFunction;
     customLauncher?: AnyFunction;
     launcherOpenLabel: string;
@@ -19,7 +18,12 @@ export interface WidgetLayoutProps extends IFrameWindowProps {
     launcherOpenImg: string;
     imagePreview?: boolean;
     resizable?: boolean;
-    src: string;
+    startOpen?: boolean;
+    alternateContent?: AltContent;
+    fixedPosition?: boolean;
+    alignLeft?: boolean;
+    closeComponent?: React.ReactNode;
+    launchComponent?: React.ReactNode;
 }
 
 export const WidgetLayout = ({
@@ -30,14 +34,16 @@ export const WidgetLayout = ({
     launcherCloseLabel,
     launcherCloseImg,
     launcherOpenImg,
+    closeComponent,
+    launchComponent,
     imagePreview,
     resizable,
+    alternateContent,
+    fixedPosition,
+    alignLeft,
     ...iframeProps
 }: WidgetLayoutProps) => {
-    const { showChat, visible } = useSelector((state: GlobalState) => ({
-        showChat: state.behavior.showChat,
-        visible: state.preview.visible,
-    }));
+    const { widgetOpenState, visible } = useContext(WidgetContext);
 
     useEffect(() => {
         document.body.setAttribute('style', `overflow: ${visible ? 'hidden' : 'auto'}`);
@@ -45,28 +51,39 @@ export const WidgetLayout = ({
 
     return (
         <div
-            className={cn('pcw-widget-container', {
-                'pcw-previewer': imagePreview,
-                'pcw-close-widget-container ': !showChat,
+            className={classNames({
+                'pcw-widget-container-fixed-left': alignLeft && fixedPosition,
+                'pcw-widget-container-fixed': !alignLeft && fixedPosition,
+                'pcw-widget-container': !fixedPosition,
+                'pcw-close-widget-container ': !widgetOpenState,
             })}
         >
             <IFrameContainer
                 src={src}
-                showChat={showChat}
-                className={showChat ? 'active' : 'hidden'}
+                alternateContent={alternateContent}
+                widgetOpenState={widgetOpenState}
+                className={widgetOpenState ? 'active' : 'hidden'}
                 resizable={resizable}
                 {...iframeProps}
             />
-            {customLauncher ? (
-                customLauncher(onToggleConversation)
-            ) : (
-                <Launcher
-                    toggle={onToggleConversation}
-                    openLabel={launcherOpenLabel}
-                    closeLabel={launcherCloseLabel}
-                    closeImg={launcherCloseImg}
-                    openImg={launcherOpenImg}
-                />
+
+            {fixedPosition && (
+                <>
+                    {customLauncher ? (
+                        customLauncher(onToggleConversation)
+                    ) : (
+                        <Launcher
+                            alignLeft={alignLeft}
+                            toggle={onToggleConversation}
+                            openLabel={launcherOpenLabel}
+                            closeLabel={launcherCloseLabel}
+                            closeImg={launcherCloseImg}
+                            openImg={launcherOpenImg}
+                            closeComponent={closeComponent}
+                            launchComponent={launchComponent}
+                        />
+                    )}
+                </>
             )}
         </div>
     );
