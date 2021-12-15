@@ -1,6 +1,7 @@
 'use strict';
 
 const path = require('path');
+const webpack = require('webpack');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
@@ -16,7 +17,7 @@ module.exports = {
     resolve: {
         extensions: ['.tsx', '.ts', '.js'],
     },
-    target: 'node',
+    target: 'web',
     mode: 'production',
     module: {
         rules: [
@@ -79,20 +80,18 @@ module.exports = {
             filename: 'index.html',
             title: 'Palavyr Chat Widget',
         }),
+        // new webpack.DefinePlugin({
+        //     'process.env.NODE_ENV': JSON.stringify('production'),
+        // }),
+        new webpack.ProvidePlugin({
+            process: 'process/browser',
+        }),
     ],
-    externals: {
-        react: {
-            commonjs: 'React',
-            commonjs2: 'react',
-            amd: 'react',
-        },
-        'react-dom': {
-            commonjs: 'ReactDOM',
-            commonjs2: 'react-dom',
-            amd: 'react-dom',
-        },
-    },
     optimization: {
         minimizer: [new TerserPlugin(), new CssMinimizerPlugin()],
     },
 };
+
+// References:
+// - https://stackoverflow.com/questions/45818937/webpack-uncaught-referenceerror-require-is-not-defined
+// -

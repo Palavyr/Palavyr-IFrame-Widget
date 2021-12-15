@@ -1,11 +1,10 @@
 import { useState } from 'react';
 import { Widget } from '../src/index';
 import './app.scss';
-import React from 'react';
 
 import paul from './p.jpg';
 
-const FALLBACK = 'https://www.google.com';
+const FALLBACK = 'https://www.palavyr.com';
 
 export const App = () => {
     return (
