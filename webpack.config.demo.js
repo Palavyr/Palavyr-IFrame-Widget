@@ -4,8 +4,8 @@ const webpack = require('webpack');
 const path = require('path');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
-
 const TerserPlugin = require('terser-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
     entry: './dev/main.tsx',
@@ -74,6 +74,11 @@ module.exports = {
         new MiniCssExtractPlugin({
             filename: 'styles.css',
             chunkFilename: '[id].css',
+        }),
+        new HtmlWebpackPlugin({
+            template: './dev/index.html',
+            filename: 'index.html',
+            title: 'Palavyr Chat Widget',
         }),
     ],
     externals: {
