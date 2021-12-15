@@ -25,3 +25,6 @@ I didn't feel this would be an appropriate extension to the parent project since
 Furthermore, the package is primarily intended to be used as the widget container for the <a href="https://www.palavyr.com">Palavry chat bot service</a>. So if you're building a site and would like to integrate Palavyr, you can use this to launch the widget in your customer's website.
 
 For more information about Palavyr, please visit us at www.palavyr.com
+
+
+For those interested in a nice guide to publishing their component demo to github pages, check out [this blog](https://medium.com/dailyjs/building-a-react-component-with-webpack-publish-to-npm-deploy-to-github-guide-6927f60b3220)
