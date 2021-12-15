@@ -43,7 +43,7 @@ export const WidgetLayout = ({
     alignLeft,
     ...iframeProps
 }: WidgetLayoutProps) => {
-    const { widgetOpenState, visible } = useContext(WidgetContext);
+    const { widgetOpenState, visible, persistState } = useContext(WidgetContext);
 
     useEffect(() => {
         document.body.setAttribute('style', `overflow: ${visible ? 'hidden' : 'auto'}`);
@@ -64,6 +64,7 @@ export const WidgetLayout = ({
                 widgetOpenState={widgetOpenState}
                 className={widgetOpenState ? 'active' : 'hidden'}
                 resizable={resizable}
+                persistState={persistState}
                 {...iframeProps}
             />
 

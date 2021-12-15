@@ -4,12 +4,13 @@ import { IFrameWindow, OptionalSrcProps } from './IFrameWindow';
 import { AltContent } from 'src/utils/types';
 import classNames from 'classnames';
 
-export interface ConversationProps extends OptionalSrcProps {
+export interface IFrameContainerProps extends OptionalSrcProps {
     widgetOpenState: boolean;
     className: string;
     resizable?: boolean;
     src?: string;
     alternateContent?: AltContent;
+    persistState?: boolean;
 }
 
 export const IFrameContainer = ({
@@ -18,10 +19,12 @@ export const IFrameContainer = ({
     alternateContent,
     resizable,
     widgetOpenState,
+    persistState,
     ...iframeProps
-}: ConversationProps) => {
+}: IFrameContainerProps) => {
     const [containerDiv, setContainerDiv] = useState<HTMLElement | null>();
-    let startX, startWidth;
+    let startX: number;
+    let startWidth: number;
 
     useEffect(() => {
         const containerDiv = document.getElementById('pcw-conversation-container');
@@ -59,12 +62,13 @@ export const IFrameContainer = ({
         visibility: widgetOpenState ? 'visible' : 'hidden',
         ...iframeProps.style,
     };
-
     return (
         <div style={style} onMouseDown={initResize} className={classNames('pcw-conversation-container', className)}>
             {resizable && <div className="pcw-conversation-resizer" />}
-            {alternateContent}
-            {alternateContent === undefined && src && <IFrameWindow src={src} {...iframeProps} />}
+            {(persistState || widgetOpenState) && alternateContent}
+            {alternateContent === undefined && src && (persistState || widgetOpenState) && (
+                <IFrameWindow src={src} {...iframeProps} />
+            )}
         </div>
     );
 };

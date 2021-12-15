@@ -19,6 +19,7 @@ export interface WidgetProps extends OptionalSrcProps {
     alignLeft?: boolean;
     closeComponent?: React.ReactNode;
     launchComponent?: React.ReactNode;
+    persistState?: boolean;
 }
 
 export const Widget = ({
@@ -35,6 +36,7 @@ export const Widget = ({
     fixedPosition = true,
     open = undefined,
     alignLeft = false,
+    persistState = true,
     closeComponent,
     launchComponent,
     ...iframeProps
@@ -64,7 +66,7 @@ export const Widget = ({
     }
 
     return (
-        <WidgetContext.Provider value={{ widgetOpenState, visible, toggleConversation }}>
+        <WidgetContext.Provider value={{ widgetOpenState, visible, toggleConversation, persistState }}>
             <WidgetLayout
                 {...iframeProps}
                 src={src}

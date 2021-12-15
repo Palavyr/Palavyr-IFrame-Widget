@@ -64,8 +64,6 @@ const AlternateContentWidget = () => {
         </div>
     );
 
-    // const open
-
     return (
         <Widget
             style={{ height: '540px', overflow: 'hidden' }}
@@ -78,6 +76,7 @@ const AlternateContentWidget = () => {
             launcherCloseLabel="Close"
             closeComponent={<div>Close</div>}
             launchComponent={<div>Launch</div>}
+            persistState={false}
         />
     );
 };

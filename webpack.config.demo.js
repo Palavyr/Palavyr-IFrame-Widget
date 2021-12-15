@@ -80,9 +80,6 @@ module.exports = {
             filename: 'index.html',
             title: 'Palavyr Chat Widget',
         }),
-        // new webpack.DefinePlugin({
-        //     'process.env.NODE_ENV': JSON.stringify('production'),
-        // }),
         new webpack.ProvidePlugin({
             process: 'process/browser',
         }),
@@ -94,4 +91,3 @@ module.exports = {
 
 // References:
 // - https://stackoverflow.com/questions/45818937/webpack-uncaught-referenceerror-require-is-not-defined
-// -

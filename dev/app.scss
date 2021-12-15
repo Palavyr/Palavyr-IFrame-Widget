@@ -43,10 +43,35 @@
 }
 
 .alternate-content img {
-    animation:cubic-bezier(0.6, -0.28, 0.735, 0.045)(0, 0.5s, bounce);
-    translate: translateY(-25%);
+    animation: shimmy 3s forwards;
     height: auto;
     padding: 1rem;
     border-radius: 15px;
     border: 3px solid white;
+}
+
+@keyframes shimmy {
+    0% {
+        transform: translate(0, 0);
+    }
+    20% {
+        transform: translate(-10vh, -10vh);
+        opacity: 0.8;
+    }
+    40% {
+        transform: translate(10vh, -20vh);
+        opacity: 0.6;
+    }
+    60% {
+        transform: translate(-10vh, -30vh);
+        opacity: 0.4;
+    }
+    80% {
+        transform: translate(10vh, -40vh);
+        opacity: 0.2;
+    }
+    100% {
+        transform: translate(-10vh, -50vh);
+        opacity: 0;
+    }
 }
