@@ -1,13 +1,27 @@
 import { useState } from 'react';
 import { Widget } from '../src/index';
 import './app.scss';
+import React from 'react';
+
 import paul from './p.jpg';
+
+const FALLBACK = 'https://www.google.com';
 
 export const App = () => {
     return (
         <>
-            <div style={{ color: "white", fontWeight: 800, textAlign: 'center', top: "0px", padding: "2rem", height: '60px', backgroundColor: 'rebeccapurple' }}>
-                <h1 style={{fontSize: "32pt"}}>Palavyr Chat Widget Demo</h1>
+            <div
+                style={{
+                    color: 'white',
+                    fontWeight: 800,
+                    textAlign: 'center',
+                    top: '0px',
+                    padding: '2rem',
+                    height: '60px',
+                    backgroundColor: 'rebeccapurple',
+                }}
+            >
+                <h1 style={{ fontSize: '32pt' }}>Palavyr Chat Widget Demo</h1>
             </div>
             <FixedWidget />
             <AlternateContentWidget />
@@ -18,8 +32,9 @@ export const App = () => {
 
 const ControlledWidget = () => {
     const [open, setOpen] = useState(false);
-    const src = process.env.PALAVYR_TEST_API_KEY as string;
+    const src = (process.env.PALAVYR_TEST_API_KEY as string) || FALLBACK;
     console.log(src);
+
     return (
         <div className="container">
             <div className="button" onClick={() => setOpen(!open)}>
@@ -38,7 +53,7 @@ const ControlledWidget = () => {
 };
 
 const FixedWidget = () => {
-    const src = process.env.PALAVYR_TEST_API_KEY as string;
+    const src = (process.env.PALAVYR_TEST_API_KEY as string) || FALLBACK;
     return <Widget src={src} fixedPosition resizable startOpen={false} style={{ height: '540px' }} />;
 };
 
