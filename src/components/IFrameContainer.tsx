@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react';
-import './IFrameContainer-style.scss';
 import { IFrameWindow, OptionalSrcProps } from './IFrameWindow';
 import { AltContent } from 'src/utils/types';
 import classNames from 'classnames';
+import './IFrameContainer-style.scss';
 
 export interface IFrameContainerProps extends OptionalSrcProps {
     widgetOpenState: boolean;
