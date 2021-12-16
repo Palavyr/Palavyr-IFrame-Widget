@@ -1,7 +1,7 @@
 {
   "name": "palavyr-chat-widget",
   "private": false,
-  "version": "0.1.16",
+  "version": "0.1.17",
   "description": "Palavyr Chat Widget - a react component that allows you to place a chat widget compatible with Palavyr in your website.",
   "repository": "git@github.com:Palavyr/palavyr-chat-widget.git",
   "license": "MIT",

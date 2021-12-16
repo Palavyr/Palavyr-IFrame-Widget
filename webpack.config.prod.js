@@ -12,7 +12,9 @@ module.exports = {
     output: {
         path: path.join(__dirname, '/dist'),
         filename: 'index.js',
-        libraryTarget: 'commonjs2',
+        libraryTarget: 'umd',
+        library: 'palavyr-chat-widget',
+        umdNamedDefine: true,
     },
     resolve: {
         extensions: ['.tsx', '.ts', '.js'],
