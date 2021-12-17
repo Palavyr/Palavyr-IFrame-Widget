@@ -1,9 +1,7 @@
 {
     "extends": "./base.tsconfig.json",
-    "exclude": [
-        "node_modules",
-        "dist",
-        "build",
-        "demo"
+    "include": [
+        "src",
+        "custom.d.ts"
     ]
 }

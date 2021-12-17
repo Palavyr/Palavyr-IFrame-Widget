@@ -31,10 +31,5 @@
             "custom.d.ts"
         ],
         "allowSyntheticDefaultImports": true
-    },
-    "include": [
-        "src",
-        "demo",
-        "custom.d.ts"
-    ]
+    }
 }
