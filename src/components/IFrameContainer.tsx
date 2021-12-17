@@ -28,15 +28,15 @@ export const IFrameContainer = ({
     let startWidth: number;
 
     useEffect(() => {
-        const containerDiv = document.getElementById('pcw-conversation-container');
-        setContainerDiv(containerDiv);
+        const cDiv = document.getElementById('pcw-conversation-container');
+        setContainerDiv(cDiv);
     }, []);
 
     const initResize = (e: { clientX: number }) => {
         if (resizable) {
             startX = e.clientX;
             if (document.defaultView && containerDiv) {
-                startWidth = parseInt(document.defaultView.getComputedStyle(containerDiv).width);
+                startWidth = parseInt(document.defaultView.getComputedStyle(containerDiv).width, 10);
                 window.addEventListener('mousemove', resize, false);
                 window.addEventListener('mouseup', stopResize, false);
             }

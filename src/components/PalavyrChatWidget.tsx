@@ -7,7 +7,7 @@ import React from 'react';
 
 export interface PalavyrChatWidgetProps extends OptionalSrcProps {
     customLauncher?: AnyFunction;
-    handleToggle?: AnyFunction;
+    onToggle?: AnyFunction;
     launcherOpenLabel?: string;
     launcherCloseLabel?: string;
     launcherCloseImg?: string;
@@ -25,21 +25,21 @@ export interface PalavyrChatWidgetProps extends OptionalSrcProps {
 
 export const PalavyrChatWidget = ({
     src,
-    customLauncher = undefined,
-    handleToggle = undefined,
+    customLauncher,
+    onToggle,
+    open,
+    closeComponent,
+    launchComponent,
     launcherOpenLabel = 'Open chat',
     launcherCloseLabel = 'Close chat',
     launcherCloseImg = '',
     launcherOpenImg = '',
     resizable = true,
     startOpen = false,
-    alternateContent = undefined,
+    alternateContent,
     fixedPosition = true,
-    open = undefined,
     alignLeft = false,
     persistState = true,
-    closeComponent,
-    launchComponent,
     ...iframeProps
 }: PalavyrChatWidgetProps) => {
     const [widgetOpenState, setWidgetOpenState] = useState(false);
@@ -59,7 +59,9 @@ export const PalavyrChatWidget = ({
 
     const toggleConversation = () => {
         setWidgetOpenState(!widgetOpenState);
-        handleToggle ? handleToggle(widgetOpenState) : null;
+
+        /* eslint-disable-next-line */
+        onToggle !== undefined ? onToggle(widgetOpenState) : null;
     };
 
     if (fixedPosition) {

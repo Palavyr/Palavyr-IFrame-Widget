@@ -4,4 +4,15 @@ example
 .eslintrc
 .prettierrc
 tsconfig.json
-rollup.*
+.nojekyll
+.gitignore
+README.md
+tslint.json
+.prettierrc
+.npmrc
+.eslintignore
+prod.tsconfig.json
+tslint.json
+.prettierrc
+demo.tsconfig.json
+demo

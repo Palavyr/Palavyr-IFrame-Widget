@@ -4,8 +4,8 @@ import classNames from 'classnames';
 import { WidgetContext } from '../context/widgetContext';
 import React from 'react';
 
-const openLauncher = require('../../assets/launcher_button.svg') as string;
-const close = require('../../assets/clear-button.svg') as string;
+import openLauncher from '../../assets/launcher_button.svg';
+import close from '../../assets/clear-button.svg';
 
 export interface LauncherProps {
     toggle: () => void;
@@ -34,16 +34,12 @@ export const Launcher = ({
         toggle();
     };
 
-    const styles = widgetOpenState
-        ? { display: 'flex', alignItems: 'center', justifyContent: 'center' }
-        : { display: 'flex', alignItems: 'center', justifyContent: 'center' };
-
-    if (alignLeft == undefined) alignLeft = false;
+    if (alignLeft === undefined) alignLeft = false;
 
     return (
         <button
             type="button"
-            style={styles}
+            style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}
             className={classNames({
                 'pcw-hide-sm': widgetOpenState === true,
                 'pcw-animation': widgetOpenState === false || widgetOpenState === undefined,

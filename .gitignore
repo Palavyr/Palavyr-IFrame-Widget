@@ -6,6 +6,7 @@ example/build
 # builds
 build
 dist
+lib
 
 # misc
 .DS_Store
