@@ -105,6 +105,6 @@
     "parser": "babel-eslint"
   },
   "files": [
-    "./dist/**/*"
+    "dist/**/*"
   ]
 }
