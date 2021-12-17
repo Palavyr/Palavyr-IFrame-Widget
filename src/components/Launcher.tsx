@@ -57,11 +57,7 @@ export const Launcher = ({
             ) : (
                 <>
                     {launchComponent ?? (
-                        <img
-                            src={launchComponent || openImg || openLauncher}
-                            className="pcw-open-launcher"
-                            alt={closeLabel}
-                        />
+                        <img src={openImg || openLauncher} className="pcw-open-launcher" alt={closeLabel} />
                     )}
                 </>
             )}
