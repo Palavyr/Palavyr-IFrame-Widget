@@ -1,11 +1,11 @@
-import { WidgetLayout } from './components/WidgetLayout';
-import { OptionalSrcProps } from './components/IFrameWindow';
+import { WidgetLayout } from './WidgetLayout';
+import { OptionalSrcProps } from './IFrameWindow';
 import { useEffect, useState } from 'react';
-import { WidgetContext } from './context/widgetContext';
-import { AnyFunction, AltContent } from './types';
+import { WidgetContext } from '../context/widgetContext';
+import { AnyFunction, AltContent } from '../types';
 import React from 'react';
 
-export interface WidgetProps extends OptionalSrcProps {
+export interface PalavyrChatWidgetProps extends OptionalSrcProps {
     customLauncher?: AnyFunction;
     handleToggle?: AnyFunction;
     launcherOpenLabel?: string;
@@ -23,7 +23,7 @@ export interface WidgetProps extends OptionalSrcProps {
     persistState?: boolean;
 }
 
-const Widget = ({
+export const PalavyrChatWidget = ({
     src,
     customLauncher = undefined,
     handleToggle = undefined,
@@ -41,7 +41,7 @@ const Widget = ({
     closeComponent,
     launchComponent,
     ...iframeProps
-}: WidgetProps) => {
+}: PalavyrChatWidgetProps) => {
     const [widgetOpenState, setWidgetOpenState] = useState(false);
     const [visible, _] = useState(undefined);
 
@@ -87,5 +87,3 @@ const Widget = ({
         </WidgetContext.Provider>
     );
 };
-
-export default Widget;

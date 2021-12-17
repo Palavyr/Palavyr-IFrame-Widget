@@ -1,45 +1,42 @@
 'use strict';
 
-const path = require('path');
 const webpack = require('webpack');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
-const TerserPlugin = require('terser-webpack-plugin');
+const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const Dotenv = require('dotenv-webpack');
 
 module.exports = {
-    entry: './demo/index.tsx',
-    output: {
-        path: path.join(__dirname, '/build'),
-        filename: 'index.js',
-        libraryTarget: 'commonjs2',
-    },
-    resolve: {
-        extensions: ['.tsx', '.ts', '.js'],
+    entry: {
+        main: path.resolve(__dirname, 'demo/index.tsx'),
+        vendor: ['react', 'react-dom'],
     },
     target: 'web',
-    mode: 'production',
+    mode: 'development',
+    output: {
+        path: path.resolve(__dirname, 'build'),
+        filename: '[name].js',
+    },
+    devServer: {
+        contentBase: path.resolve(__dirname, 'dist'),
+        compress: false,
+        port: 3010,
+        hot: true,
+    },
+    resolve: {
+        extensions: ['.tsx', '.ts', '.js', '.jsx'],
+    },
     module: {
         rules: [
             {
                 test: /\.ts(x?)$/,
-                exclude: [/node_modules/],
-                use: ['babel-loader', 'ts-loader'],
-            },
-            {
-                enforce: 'pre',
-                test: /\.js$/,
-                loader: 'source-map-loader',
-            },
-            {
-                test: /\.js$/,
                 exclude: /node_modules/,
-                loader: 'babel-loader',
+                use: ['babel-loader', { loader: 'ts-loader', options: { configFile: 'demo.tsconfig.json' } }],
             },
             {
                 test: /\.scss$/,
+                exclude: /node_modules/,
                 use: [
-                    MiniCssExtractPlugin.loader,
+                    'style-loader',
                     'css-loader',
                     {
                         loader: 'postcss-loader',
@@ -54,7 +51,7 @@ module.exports = {
                         options: {
                             implementation: require('node-sass'),
                             sassOptions: {
-                                includePaths: [path.resolve(__dirname, 'src/'), path.resolve(__dirname, 'demo/')],
+                                includePaths: [path.resolve(__dirname, 'src/'), path.resolve(__dirname, 'dev/')],
                             },
                         },
                     },
@@ -66,28 +63,19 @@ module.exports = {
             },
         ],
     },
+    devtool: 'inline-source-map',
     plugins: [
-        /**
-         * Known issue for the CSS Extract Plugin in Ubuntu 16.04: You'll need to install
-         * the following package: sudo apt-get install libpng16-dev
-         */
-        new MiniCssExtractPlugin({
-            filename: 'styles.css',
-            chunkFilename: '[id].css',
-        }),
+        new Dotenv({ path: '.env.development' }),
+        new webpack.HotModuleReplacementPlugin(),
         new HtmlWebpackPlugin({
             template: './public/index.html',
-            filename: 'index.html',
-            title: 'Palavyr Chat Widget',
+            file: 'index.html',
         }),
         new webpack.ProvidePlugin({
-            process: 'process/browser',
+            React: 'react',
         }),
     ],
-    optimization: {
-        minimizer: [new TerserPlugin(), new CssMinimizerPlugin()],
+    performance: {
+        hints: false,
     },
 };
-
-// References:
-// - https://stackoverflow.com/questions/45818937/webpack-uncaught-referenceerror-require-is-not-defined

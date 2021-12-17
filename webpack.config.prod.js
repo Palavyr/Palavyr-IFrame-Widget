@@ -8,13 +8,12 @@ const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
 
 module.exports = {
-    entry: './src/index.tsx',
+    entry: './src/index.ts',
     output: {
         path: path.join(__dirname, '/dist'),
         filename: 'index.js',
         libraryTarget: 'umd',
         library: 'palavyr-chat-widget',
-        umdNamedDefine: true,
     },
     resolve: {
         extensions: ['.tsx', '.ts', '.js'],
@@ -27,16 +26,6 @@ module.exports = {
                 test: /\.ts(x?)$/,
                 exclude: [/node_modules/, /dev/],
                 use: ['babel-loader', 'ts-loader'],
-            },
-            {
-                enforce: 'pre',
-                test: /\.js$/,
-                loader: 'source-map-loader',
-            },
-            {
-                test: /\.js$/,
-                exclude: /node_modules/,
-                loader: 'babel-loader',
             },
             {
                 test: /\.scss$/,
@@ -56,7 +45,7 @@ module.exports = {
                         options: {
                             implementation: require('node-sass'),
                             sassOptions: {
-                                includePaths: [path.resolve(__dirname, 'src/scss/')],
+                                includePaths: [path.resolve(__dirname, 'src/')],
                             },
                         },
                     },

@@ -1,6 +1,7 @@
 import React from 'react';
 import { useState } from 'react';
-import Widget from '../src';
+import { PalavyrChatWidget } from '../src/index';
+
 import './app.scss';
 import paul from './p.jpg';
 
@@ -39,7 +40,7 @@ const ControlledWidget = () => {
             <div className="button" onClick={() => setOpen(!open)}>
                 {open ? 'Close' : 'Open'}
             </div>
-            <Widget
+            <PalavyrChatWidget
                 open={open}
                 src={src}
                 fixedPosition={false}
@@ -53,7 +54,7 @@ const ControlledWidget = () => {
 
 const FixedWidget = () => {
     const src = (process.env.PALAVYR_TEST_API_KEY as string) || FALLBACK;
-    return <Widget src={src} fixedPosition resizable startOpen={false} style={{ height: '540px' }} />;
+    return <PalavyrChatWidget src={src} fixedPosition resizable startOpen={false} style={{ height: '540px' }} />;
 };
 
 const AlternateContentWidget = () => {
@@ -65,7 +66,7 @@ const AlternateContentWidget = () => {
     );
 
     return (
-        <Widget
+        <PalavyrChatWidget
             style={{ height: '540px', overflow: 'hidden' }}
             fixedPosition
             alignLeft
