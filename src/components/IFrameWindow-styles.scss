@@ -1,21 +1,20 @@
-@import 'variables/colors';
-@import 'common';
-
 .pcw-messages-container {
-    background-color: $white;
-    height: "100%";
+    background-color: white;
+    height: '100%';
     overflow-y: none;
     -webkit-overflow-scrolling: touch;
 }
 
 .pcw-full-screen {
     .pcw-messages-container {
-        @include messages-container-fs;
+        height: 100%;
+        max-height: none;
     }
 }
 
 @media screen and (max-width: 800px) {
     .pcw-messages-container {
-        @include messages-container-fs;
+        height: 100%;
+        max-height: none;
     }
 }

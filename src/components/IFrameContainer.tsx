@@ -1,8 +1,9 @@
 import { useState, useEffect } from 'react';
 import { IFrameWindow, OptionalSrcProps } from './IFrameWindow';
-import { AltContent } from 'src/utils/types';
 import classNames from 'classnames';
 import './IFrameContainer-style.scss';
+import { AltContent } from '../types';
+import React from 'react';
 
 export interface IFrameContainerProps extends OptionalSrcProps {
     widgetOpenState: boolean;
@@ -31,7 +32,7 @@ export const IFrameContainer = ({
         setContainerDiv(containerDiv);
     }, []);
 
-    const initResize = (e) => {
+    const initResize = (e: { clientX: number }) => {
         if (resizable) {
             startX = e.clientX;
             if (document.defaultView && containerDiv) {
@@ -42,13 +43,13 @@ export const IFrameContainer = ({
         }
     };
 
-    const resize = (e) => {
+    const resize = (e: { clientX: number }) => {
         if (containerDiv) {
             containerDiv.style.width = startWidth - e.clientX + startX + 'px';
         }
     };
 
-    const stopResize = (e) => {
+    const stopResize = (_: any) => {
         window.removeEventListener('mousemove', resize, false);
         window.removeEventListener('mouseup', stopResize, false);
     };

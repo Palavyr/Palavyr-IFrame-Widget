@@ -2,6 +2,7 @@ import './Launcher-style.scss';
 import { useContext } from 'react';
 import classNames from 'classnames';
 import { WidgetContext } from '../context/widgetContext';
+import React from 'react';
 
 const openLauncher = require('../../assets/launcher_button.svg') as string;
 const close = require('../../assets/clear-button.svg') as string;

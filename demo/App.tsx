@@ -1,7 +1,7 @@
+import React from 'react';
 import { useState } from 'react';
-import { Widget } from '../src/index';
+import Widget from '../src';
 import './app.scss';
-
 import paul from './p.jpg';
 
 const FALLBACK = 'https://www.palavyr.com';

@@ -1,9 +1,4 @@
-@import 'common';
-@import 'variables/colors';
-@import 'animation';
-
 .pcw-conversation-container {
-
     &.active {
         opacity: 1;
         transform: translateY(0px);
@@ -30,12 +25,16 @@
 
 .pcw-full-screen {
     .pcw-conversation-container {
-        @include conversation-container-fs;
+        display: flex;
+        flex-direction: column;
+        height: 100%;
     }
 }
 
 @media screen and (max-width: 800px) {
     .pcw-conversation-container {
-        @include conversation-container-fs;
+        display: flex;
+        flex-direction: column;
+        height: 100%;
     }
 }

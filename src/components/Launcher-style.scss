@@ -1,14 +1,80 @@
-@import 'common';
-@import 'variables/colors';
-@import 'animation';
+@mixin animation($delay, $duration, $animation) {
+    -webkit-animation-delay: $delay;
+    -webkit-animation-duration: $duration;
+    -webkit-animation-name: $animation;
+    -webkit-animation-fill-mode: forwards;
+
+    -moz-animation-delay: $delay;
+    -moz-animation-duration: $duration;
+    -moz-animation-name: $animation;
+    -moz-animation-fill-mode: forwards;
+
+    animation-delay: $delay;
+    animation-duration: $duration;
+    animation-name: $animation;
+    animation-fill-mode: forwards;
+}
+
+@mixin keyframes($animation-name) {
+    @-webkit-keyframes #{$animation-name} {
+        @content;
+    }
+
+    @-moz-keyframes #{$animation-name} {
+        @content;
+    }
+
+    @keyframes #{$animation-name} {
+        @content;
+    }
+}
+
+@include keyframes(rotation-lr) {
+    from {
+        transform: rotate(-90deg);
+    }
+    to {
+        transform: rotate(0);
+    }
+}
+
+@include keyframes(rotation-rl) {
+    from {
+        transform: rotate(90deg);
+    }
+    to {
+        transform: rotate(0);
+    }
+}
+
+@include keyframes(slide-in) {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@include keyframes(slide-out) {
+    from {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    to {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+}
 
 .pcw-launcher {
     @include animation(0, 0.5s, slide-in);
     align-self: flex-end;
-    background-color: $turqois-1;
+    background-color: #35cce6;
     border: 0;
     border-radius: 50%;
-    // box-shadow: 0px 2px 10px 1px $grey-3;
     height: 60px;
     margin-top: 10px;
     cursor: pointer;
@@ -17,17 +83,16 @@
         outline: none;
     }
     &:hover {
-        background-color: $turqois-2;
+        background-color: #a3eaf7;
     }
 }
 
 .pcw-launcher-left {
     @include animation(0, 0.5s, slide-in);
     align-self: flex-start;
-    background-color: $turqois-1;
+    background-color: #35cce6;
     border: 0;
     border-radius: 50%;
-    // box-shadow: 0px 2px 10px 1px $grey-3;
     height: 60px;
     margin-top: 10px;
     cursor: pointer;
@@ -36,7 +101,7 @@
         outline: none;
     }
     &:hover {
-        background-color: $turqois-2;
+        background-color: #a3eaf7;
     }
 }
 
@@ -51,7 +116,10 @@
 
 @media screen and (max-width: 800px) {
     .pcw-launcher {
-        @include launcher-fs;
+        bottom: 0;
+        margin: 20px;
+        position: fixed;
+        right: 0;
     }
 
     .pcw-hide-sm {

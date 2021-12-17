@@ -7,11 +7,12 @@ const Dotenv = require('dotenv-webpack');
 
 module.exports = {
     entry: {
-        main: path.resolve(__dirname, 'dev/main.tsx'),
+        main: path.resolve(__dirname, 'demo/index.tsx'),
         vendor: ['react', 'react-dom'],
     },
     target: 'web',
     mode: 'development',
+
     devServer: {
         contentBase: path.resolve(__dirname, 'dist'),
         compress: false,
@@ -19,7 +20,7 @@ module.exports = {
         hot: true,
     },
     resolve: {
-        extensions: ['.tsx', '.ts', '.js'],
+        extensions: ['.tsx', '.ts', '.js', '.jsx'],
     },
     module: {
         rules: [
@@ -57,7 +58,7 @@ module.exports = {
                         options: {
                             implementation: require('node-sass'),
                             sassOptions: {
-                                includePaths: [path.resolve(__dirname, 'src/scss/'), path.resolve(__dirname, 'dev/')],
+                                includePaths: [path.resolve(__dirname, 'src/'), path.resolve(__dirname, 'dev/')],
                             },
                         },
                     },
@@ -74,7 +75,8 @@ module.exports = {
         new Dotenv({ path: '.env.development' }),
         new webpack.HotModuleReplacementPlugin(),
         new HtmlWebpackPlugin({
-            template: './dev/index.html',
+            template: './public/index.html',
+            file: "index.html"
         }),
         new webpack.ProvidePlugin({
             React: 'react',

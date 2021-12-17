@@ -1,8 +1,9 @@
 import { WidgetLayout } from './components/WidgetLayout';
-import { AltContent, AnyFunction } from './utils/types';
 import { OptionalSrcProps } from './components/IFrameWindow';
 import { useEffect, useState } from 'react';
 import { WidgetContext } from './context/widgetContext';
+import { AnyFunction, AltContent } from './types';
+import React from 'react';
 
 export interface WidgetProps extends OptionalSrcProps {
     customLauncher?: AnyFunction;
@@ -22,7 +23,7 @@ export interface WidgetProps extends OptionalSrcProps {
     persistState?: boolean;
 }
 
-export const Widget = ({
+const Widget = ({
     src,
     customLauncher = undefined,
     handleToggle = undefined,
@@ -42,7 +43,7 @@ export const Widget = ({
     ...iframeProps
 }: WidgetProps) => {
     const [widgetOpenState, setWidgetOpenState] = useState(false);
-    const [visible, setVisible] = useState(undefined);
+    const [visible, _] = useState(undefined);
 
     useEffect(() => {
         setWidgetOpenState(startOpen);
@@ -86,3 +87,5 @@ export const Widget = ({
         </WidgetContext.Provider>
     );
 };
+
+export default Widget;

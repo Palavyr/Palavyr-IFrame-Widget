@@ -8,7 +8,7 @@ const TerserPlugin = require('terser-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
-    entry: './dev/main.tsx',
+    entry: './demo/index.tsx',
     output: {
         path: path.join(__dirname, '/build'),
         filename: 'index.js',
@@ -54,7 +54,7 @@ module.exports = {
                         options: {
                             implementation: require('node-sass'),
                             sassOptions: {
-                                includePaths: [path.resolve(__dirname, 'src/scss/')],
+                                includePaths: [path.resolve(__dirname, 'src/'), path.resolve(__dirname, 'demo/')],
                             },
                         },
                     },
@@ -76,7 +76,7 @@ module.exports = {
             chunkFilename: '[id].css',
         }),
         new HtmlWebpackPlugin({
-            template: './dev/index.html',
+            template: './public/index.html',
             filename: 'index.html',
             title: 'Palavyr Chat Widget',
         }),

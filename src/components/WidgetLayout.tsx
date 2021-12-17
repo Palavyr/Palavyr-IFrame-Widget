@@ -1,17 +1,17 @@
 import { useContext, useEffect } from 'react';
 import classNames from 'classnames';
-
-import { AltContent, AnyFunction } from 'src/utils/types';
+import React from 'react';
 
 import './WidgetLayout-style.scss';
 import { IFrameContainer } from './IFrameContainer';
 import { Launcher } from './Launcher';
 import { OptionalSrcProps } from './IFrameWindow';
 import { WidgetContext } from '../context/widgetContext';
+import { AltContent } from '../types';
 
 export interface WidgetLayoutProps extends OptionalSrcProps {
-    onToggleConversation: AnyFunction;
-    customLauncher?: AnyFunction;
+    onToggleConversation(...args: any): any;
+    customLauncher?: (...args: any) => any;
     launcherOpenLabel: string;
     launcherCloseLabel: string;
     launcherCloseImg: string;
@@ -67,7 +67,6 @@ export const WidgetLayout = ({
                 persistState={persistState}
                 {...iframeProps}
             />
-
             {fixedPosition && (
                 <>
                     {customLauncher ? (
