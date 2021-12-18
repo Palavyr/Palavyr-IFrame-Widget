@@ -13,7 +13,7 @@
   },
   "scripts": {
     "start": "webpack serve --config webpack.config.demo.js",
-    "build": "rimraf dist && tsc -p prod.tsconfig.json && copyfiles src/components/styles.scss dist/components/styles.scss && copyfiles -u 1 assets/* dist/assets/",
+    "build": "rimraf dist && tsc -p prod.tsconfig.json && copyfiles src/components/styles.scss dist/components/ && copyfiles -u 1 assets/* dist/assets/",
     "build-demo": "webpack --config ./webpack.config.demo.js",
     "deploy": "gh-pages -d build",
     "format": "prettier --write \"src/**/*.ts\" \"src/**/*.js\"",
