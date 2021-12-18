@@ -15,7 +15,7 @@ export interface LauncherProps {
     openImg: string;
     alignLeft?: boolean;
     closeComponent?: React.ReactNode;
-    launchComponent?: React.ReactNode;
+    openComponent?: React.ReactNode;
 }
 
 export const Launcher = ({
@@ -23,7 +23,7 @@ export const Launcher = ({
     openImg,
     closeImg,
     closeComponent,
-    launchComponent,
+    openComponent,
     openLabel,
     closeLabel,
     alignLeft,
@@ -52,7 +52,7 @@ export const Launcher = ({
                 <>{closeComponent ?? <img src={closeImg || close} className="pcw-close-launcher" alt={openLabel} />}</>
             ) : (
                 <>
-                    {launchComponent ?? (
+                    {openComponent ?? (
                         <img src={openImg || openLauncher} className="pcw-open-launcher" alt={closeLabel} />
                     )}
                 </>

@@ -19,7 +19,7 @@ export interface PalavyrChatWidgetProps extends OptionalSrcProps {
     open?: boolean;
     alignLeft?: boolean;
     closeComponent?: React.ReactNode;
-    launchComponent?: React.ReactNode;
+    openComponent?: React.ReactNode;
     persistState?: boolean;
 }
 
@@ -29,14 +29,14 @@ export const PalavyrChatWidget = ({
     onToggle,
     open,
     closeComponent,
-    launchComponent,
+    openComponent,
+    alternateContent,
     launcherOpenLabel = 'Open chat',
     launcherCloseLabel = 'Close chat',
     launcherCloseImg = '',
     launcherOpenImg = '',
     resizable = true,
     startOpen = false,
-    alternateContent,
     fixedPosition = true,
     alignLeft = false,
     persistState = true,
@@ -48,7 +48,7 @@ export const PalavyrChatWidget = ({
     useEffect(() => {
         open = startOpen;
 
-        if (!fixedPosition){
+        if (!fixedPosition) {
             open = true;
         }
 
@@ -87,7 +87,7 @@ export const PalavyrChatWidget = ({
                 launcherCloseImg={launcherCloseImg}
                 launcherOpenImg={launcherOpenImg}
                 closeComponent={closeComponent}
-                launchComponent={launchComponent}
+                openComponent={openComponent}
                 resizable={resizable}
                 fixedPosition={fixedPosition}
                 alignLeft={alignLeft}

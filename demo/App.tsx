@@ -38,7 +38,7 @@ export const App = () => {
                     <h3>Controlled</h3>
                 </div>
                 <div style={{ paddingRight: '5rem' }}>
-                    <h3>FixedPosition</h3>
+                    <h3>Fixed Position Right</h3>
                 </div>
             </div>
             <FixedWidget />

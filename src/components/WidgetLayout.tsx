@@ -23,7 +23,7 @@ export interface WidgetLayoutProps extends OptionalSrcProps {
     fixedPosition?: boolean;
     alignLeft?: boolean;
     closeComponent?: React.ReactNode;
-    launchComponent?: React.ReactNode;
+    openComponent?: React.ReactNode;
 }
 
 export const WidgetLayout = ({
@@ -35,7 +35,7 @@ export const WidgetLayout = ({
     launcherCloseImg,
     launcherOpenImg,
     closeComponent,
-    launchComponent,
+    openComponent,
     imagePreview,
     resizable,
     alternateContent,
@@ -80,7 +80,7 @@ export const WidgetLayout = ({
                             closeImg={launcherCloseImg}
                             openImg={launcherOpenImg}
                             closeComponent={closeComponent}
-                            launchComponent={launchComponent}
+                            openComponent={openComponent}
                         />
                     )}
                 </>
