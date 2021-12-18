@@ -3,7 +3,7 @@
     "includes": [
         "src",
         "demo",
-        "custom.d.ts",
+        "./custom.d.ts",
         "build"
     ],
     "exclude": [
