@@ -65,7 +65,6 @@ export const WidgetLayout = ({
                 className={widgetOpenState || !fixedPosition ? 'active' : 'hidden'}
                 resizable={resizable}
                 persistState={persistState}
-                fixedPosition={fixedPosition}
                 {...iframeProps}
             />
             {fixedPosition && (

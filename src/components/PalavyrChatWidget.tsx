@@ -47,6 +47,11 @@ export const PalavyrChatWidget = ({
 
     useEffect(() => {
         open = startOpen;
+
+        if (!fixedPosition){
+            open = true;
+        }
+
         setWidgetOpenState(open);
     }, [startOpen]);
 
