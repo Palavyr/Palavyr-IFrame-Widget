@@ -27,8 +27,8 @@
         "esModuleInterop": true,
         "noUnusedParameters": true,
         "typeRoots": [
-            "node_modules/@types",
-            "custom.d.ts"
+            "./custom.d.ts",
+            "./node_modules/@types"
         ],
         "allowSyntheticDefaultImports": true
     }

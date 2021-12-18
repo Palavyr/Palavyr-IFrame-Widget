@@ -46,8 +46,9 @@ export const PalavyrChatWidget = ({
     const [visible, _] = useState(undefined);
 
     useEffect(() => {
-        setWidgetOpenState(startOpen);
-    }, []);
+        open = startOpen;
+        setWidgetOpenState(open);
+    }, [startOpen]);
 
     useEffect(() => {
         if (open && !widgetOpenState) {

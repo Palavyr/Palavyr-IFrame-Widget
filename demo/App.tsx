@@ -23,6 +23,24 @@ export const App = () => {
             >
                 <h1 style={{ fontSize: '32pt' }}>Palavyr Chat Widget Demo</h1>
             </div>
+            <div
+                style={{
+                    width: '100%',
+                    display: 'flex',
+                    flexDirection: 'row',
+                    justifyContent: 'space-between',
+                }}
+            >
+                <div style={{ paddingLeft: '5rem' }}>
+                    <h3>Alternate Content</h3>
+                </div>
+                <div>
+                    <h3>Controlled</h3>
+                </div>
+                <div style={{ paddingRight: '5rem' }}>
+                    <h3>FixedPosition</h3>
+                </div>
+            </div>
             <FixedWidget />
             <AlternateContentWidget />
             <ControlledWidget />
@@ -33,7 +51,6 @@ export const App = () => {
 const ControlledWidget = () => {
     const [open, setOpen] = useState(false);
     const src = (process.env.PALAVYR_TEST_API_KEY as string) || FALLBACK;
-    console.log(src);
 
     return (
         <div className="container">
@@ -45,7 +62,6 @@ const ControlledWidget = () => {
                 src={src}
                 fixedPosition={false}
                 resizable
-                startOpen
                 style={{ height: '540px', width: '340px', marginTop: '1rem' }}
             />
         </div>
@@ -54,7 +70,11 @@ const ControlledWidget = () => {
 
 const FixedWidget = () => {
     const src = (process.env.PALAVYR_TEST_API_KEY as string) || FALLBACK;
-    return <PalavyrChatWidget src={src} fixedPosition resizable startOpen={false} style={{ height: '540px' }} />;
+    return (
+        <>
+            <PalavyrChatWidget src={src} fixedPosition resizable startOpen={false} style={{ height: '540px' }} />
+        </>
+    );
 };
 
 const AlternateContentWidget = () => {
@@ -66,18 +86,20 @@ const AlternateContentWidget = () => {
     );
 
     return (
-        <PalavyrChatWidget
-            style={{ height: '540px', overflow: 'hidden' }}
-            fixedPosition
-            alignLeft
-            alternateContent={alternateContent}
-            resizable
-            startOpen
-            launcherOpenLabel="Open"
-            launcherCloseLabel="Close"
-            closeComponent={<div>Close</div>}
-            launchComponent={<div>Launch</div>}
-            persistState={false}
-        />
+        <>
+            <PalavyrChatWidget
+                style={{ height: '540px', overflow: 'hidden' }}
+                fixedPosition
+                alignLeft
+                alternateContent={alternateContent}
+                resizable
+                startOpen
+                launcherOpenLabel="Open"
+                launcherCloseLabel="Close"
+                closeComponent={<div>Close</div>}
+                launchComponent={<div>Launch</div>}
+                persistState={false}
+            />
+        </>
     );
 };
