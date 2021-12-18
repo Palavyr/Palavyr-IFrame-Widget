@@ -48,11 +48,11 @@ iframeProps | React's IFrame Props -- se below | undefined | Additional props th
 
 ```
 npm notice name:          palavyr-chat-widget
-npm notice version:       0.2.14
-npm notice filename:      palavyr-chat-widget-0.2.14.tgz
-npm notice package size:  13.0 kB
-npm notice unpacked size: 49.3 kB
-npm notice shasum:        4c3d03fc0bb5c879224294079f6da4e0f35426c8
-npm notice integrity:     sha512-x83c9HRQZjBbD[...]hFSAw1sOozWQg==
-npm notice total files:   32
+npm notice version:       0.3.2
+npm notice filename:      palavyr-chat-widget-0.3.2.tgz
+npm notice package size:  13.5 kB
+npm notice unpacked size: 52.9 kB
+npm notice shasum:        8403155d2739e8adc3d0d30c87dda16db86c330f
+npm notice integrity:     sha512-s9EDMbJFuficc[...]Ur5wEgDzdV4RQ==
+npm notice total files:   42
 ```
