@@ -45,7 +45,7 @@ module.exports = {
                         options: {
                             implementation: require('node-sass'),
                             sassOptions: {
-                                includePaths: [path.resolve(__dirname, 'src/')],
+                                includePaths: [path.resolve(__dirname, 'src/**/*')],
                             },
                         },
                     },

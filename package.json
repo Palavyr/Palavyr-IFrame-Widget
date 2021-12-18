@@ -1,7 +1,7 @@
 {
   "name": "palavyr-chat-widget",
   "private": false,
-  "version": "0.1.31",
+  "version": "0.2.0",
   "description": "Palavyr Chat Widget - a react component that allows you to place a chat widget compatible with Palavyr in your website.",
   "repository": "git@github.com:Palavyr/palavyr-chat-widget.git",
   "license": "MIT",
@@ -13,7 +13,7 @@
   },
   "scripts": {
     "start": "webpack serve --config webpack.config.demo.js",
-    "build": "rimraf dist && tsc -p prod.tsconfig.json",
+    "build": "rimraf dist && tsc -p prod.tsconfig.json && copyfiles -u 1 src/components/styles.scss dist/",
     "build-demo": "webpack --config ./webpack.config.demo.js",
     "deploy": "gh-pages -d build",
     "format": "prettier --write \"src/**/*.ts\" \"src/**/*.js\"",
@@ -29,7 +29,9 @@
   ],
   "dependencies": {
     "classnames": "^2.3.1",
-    "process": "^0.11.10"
+    "copyfiles": "^2.4.1",
+    "process": "^0.11.10",
+    "typescript-plugin-css-modules": "^3.4.0"
   },
   "devDependencies": {
     "@babel/cli": "^7.8.4",
@@ -54,6 +56,7 @@
     "babel-preset-react": "^6.24.1",
     "babel-runtime": "^6.26.0",
     "clean-webpack-plugin": "^4.0.0-alpha.0",
+    "copy-webpack-plugin": "^10.2.0",
     "css-loader": "^5.2.4",
     "css-minimizer-webpack-plugin": "^3.2.0",
     "dotenv-webpack": "^7.0.3",

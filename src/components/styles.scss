@@ -142,3 +142,120 @@
         }
     }
 }
+
+.pcw-widget-container {
+    display: flex;
+    flex-direction: column;
+    margin: 0 20px 20px 0;
+    overflow: hidden;
+}
+
+.pcw-widget-container-fixed {
+    bottom: 0;
+    display: flex;
+    flex-direction: column;
+    margin: 0 20px 20px 0;
+    position: fixed;
+    right: 0;
+    overflow: hidden;
+    z-index: 9999;
+}
+
+.pcw-widget-container-fixed-left {
+    bottom: 0;
+    display: flex;
+    flex-direction: column;
+    margin-left: 20px;
+    margin-bottom: 20px;
+    position: fixed;
+    left: 0;
+    overflow: hidden;
+    z-index: 9999;
+}
+
+.pcw-full-screen {
+    height: 100vh;
+    margin: 0;
+    max-width: none;
+    width: 100%;
+}
+
+@media screen and (max-width: 800px) {
+    .pcw-widget-container {
+        height: 100vh;
+        margin: 0;
+        max-width: none;
+        width: 100%;
+    }
+}
+
+.pcw-previewer .pcw-message-img {
+    cursor: pointer;
+}
+
+.pcw-close-widget-container {
+    height: max-content;
+    width: max-content;
+}
+
+.pcw-messages-container {
+    background-color: white;
+    height: '100%';
+    overflow-y: none;
+    -webkit-overflow-scrolling: touch;
+}
+
+.pcw-full-screen {
+    .pcw-messages-container {
+        height: 100%;
+        max-height: none;
+    }
+}
+
+@media screen and (max-width: 800px) {
+    .pcw-messages-container {
+        height: 100%;
+        max-height: none;
+    }
+}
+
+.pcw-conversation-container {
+    &.active {
+        opacity: 1;
+        transform: translateY(0px);
+        transition: opacity 0.3s ease, transform 0.3s ease;
+    }
+
+    &.hidden {
+        z-index: -1;
+        pointer-events: none;
+        opacity: 0;
+        transform: translateY(10px);
+        transition: opacity 0.3s ease, transform 0.3s ease;
+    }
+}
+
+.pcw-conversation-resizer {
+    cursor: col-resize;
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 10px;
+}
+
+.pcw-full-screen {
+    .pcw-conversation-container {
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+    }
+}
+
+@media screen and (max-width: 800px) {
+    .pcw-conversation-container {
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+    }
+}

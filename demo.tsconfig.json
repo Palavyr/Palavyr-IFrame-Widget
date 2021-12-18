@@ -3,6 +3,12 @@
     "includes": [
         "src",
         "demo",
-        "custom.d.ts"
+        "custom.d.ts",
+        "build"
+    ],
+    "excludes": [
+        "node_modules",
+        "dist"
+
     ]
 }

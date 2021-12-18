@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { IFrameWindow, OptionalSrcProps } from './IFrameWindow';
 import classNames from 'classnames';
-import './IFrameContainer-style.scss';
+import './styles.scss';
 import { AltContent } from '../types';
 import React from 'react';
 

@@ -1,5 +1,5 @@
 import { IframeHTMLAttributes } from 'react';
-import './IFrameWindow-styles.scss';
+import './styles.scss';
 import React from 'react';
 
 export interface BaseFrameProps
