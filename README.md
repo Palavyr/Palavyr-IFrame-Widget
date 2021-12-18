@@ -1,5 +1,7 @@
 # palavyr-chat-widget
 
+[Demo Page](https://palavyr.github.io/palavyr-chat-widget/)
+
 ## Usage
 
     import { Widget } from 'palavyr-chat-widget';
