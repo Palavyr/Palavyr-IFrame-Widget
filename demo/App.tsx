@@ -97,7 +97,7 @@ const AlternateContentWidget = () => {
                 launcherOpenLabel="Open"
                 launcherCloseLabel="Close"
                 closeComponent={<div>Close</div>}
-                launchComponent={<div>Launch</div>}
+                openComponent={<div>Open</div>}
                 persistState={false}
             />
         </>
