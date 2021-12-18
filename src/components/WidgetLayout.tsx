@@ -62,7 +62,7 @@ export const WidgetLayout = ({
                 src={src}
                 alternateContent={alternateContent}
                 widgetOpenState={widgetOpenState}
-                className={widgetOpenState ? 'active' : 'hidden'}
+                className={widgetOpenState || !fixedPosition ? 'active' : 'hidden'}
                 resizable={resizable}
                 persistState={persistState}
                 {...iframeProps}

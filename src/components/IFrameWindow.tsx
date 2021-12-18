@@ -1,6 +1,6 @@
 import { IframeHTMLAttributes } from 'react';
-import './styles.scss';
 import React from 'react';
+import './styles.scss';
 
 export interface BaseFrameProps
     extends React.DetailedHTMLProps<IframeHTMLAttributes<HTMLIFrameElement>, HTMLIFrameElement> {}
