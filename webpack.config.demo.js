@@ -75,9 +75,6 @@ module.exports = {
         new webpack.ProvidePlugin({
             React: 'react',
         }),
-        new CopyPlugin({
-            patterns: [{ from: './assets/*', to: 'build/' }],
-        }),
     ],
     performance: {
         hints: false,

@@ -4,8 +4,8 @@ import { WidgetContext } from '../context/widgetContext';
 import React from 'react';
 import './styles.scss';
 
-const openLauncher = require('../../assets/launcher_button.svg');
-const close = require('../../assets/clear-button.svg');
+const openLauncher = require('./assets/launcher_button.svg');
+const close = require('./assets/clear-button.svg');
 
 export interface LauncherProps {
     toggle: () => void;
