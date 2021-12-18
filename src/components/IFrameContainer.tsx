@@ -63,6 +63,7 @@ export const IFrameContainer = ({
         visibility: widgetOpenState ? 'visible' : 'hidden',
         ...iframeProps.style,
     };
+
     return (
         <div style={style} onMouseDown={initResize} className={classNames('pcw-conversation-container', className)}>
             {resizable && <div className="pcw-conversation-resizer" />}

@@ -6,7 +6,7 @@
         "custom.d.ts",
         "build"
     ],
-    "excludes": [
+    "exclude": [
         "node_modules",
         "dist"
 

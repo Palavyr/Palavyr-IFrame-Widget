@@ -2,8 +2,7 @@
     "extends": "./base.tsconfig.json",
     "include": [
         "src",
-        "custom.d.ts",
-        "demo"
+        "custom.d.ts"
     ]
 
 }
