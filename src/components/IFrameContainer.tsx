@@ -12,6 +12,7 @@ export interface IFrameContainerProps extends OptionalSrcProps {
     src?: string;
     alternateContent?: AltContent;
     persistState?: boolean;
+    fixedPosition?: boolean;
 }
 
 export const IFrameContainer = ({
@@ -21,6 +22,7 @@ export const IFrameContainer = ({
     resizable,
     widgetOpenState,
     persistState,
+    fixedPosition,
     ...iframeProps
 }: IFrameContainerProps) => {
     const [containerDiv, setContainerDiv] = useState<HTMLElement | null>();
@@ -60,7 +62,7 @@ export const IFrameContainer = ({
         maxWidth: '100vw',
         position: 'relative',
         boxShadow: '0px 3px 15px rgba(0, 0, 0, 0.2)',
-        visibility: widgetOpenState ? 'visible' : 'hidden',
+        visibility: widgetOpenState && !fixedPosition ? 'visible' : 'hidden',
         ...iframeProps.style,
     };
 

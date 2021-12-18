@@ -54,8 +54,8 @@ export const WidgetLayout = ({
             className={classNames({
                 'pcw-widget-container-fixed-left': alignLeft && fixedPosition,
                 'pcw-widget-container-fixed': !alignLeft && fixedPosition,
+                'pcw-close-widget-container ': !widgetOpenState && fixedPosition,
                 'pcw-widget-container': !fixedPosition,
-                'pcw-close-widget-container ': !widgetOpenState,
             })}
         >
             <IFrameContainer
@@ -65,6 +65,7 @@ export const WidgetLayout = ({
                 className={widgetOpenState || !fixedPosition ? 'active' : 'hidden'}
                 resizable={resizable}
                 persistState={persistState}
+                fixedPosition={fixedPosition}
                 {...iframeProps}
             />
             {fixedPosition && (
