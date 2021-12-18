@@ -50,7 +50,7 @@ export const App = () => {
 
 const ControlledWidget = () => {
     const [open, setOpen] = useState(false);
-    const src = (process.env.PALAVYR_TEST_API_KEY as string) || FALLBACK;
+    const src = (process.env.REACT_APP_PALAVYR_TEST_API_KEY as string) || FALLBACK;
 
     return (
         <div className="container">
@@ -69,7 +69,7 @@ const ControlledWidget = () => {
 };
 
 const FixedWidget = () => {
-    const src = (process.env.PALAVYR_TEST_API_KEY as string) || FALLBACK;
+    const src = (process.env.REACT_APP_PALAVYR_TEST_API_KEY as string) || FALLBACK;
     return (
         <>
             <PalavyrChatWidget src={src} fixedPosition resizable startOpen={false} style={{ height: '540px' }} />
