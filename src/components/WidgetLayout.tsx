@@ -4,7 +4,7 @@ import React from 'react';
 
 import { IFrameContainer } from './IFrameContainer';
 import { Launcher } from './Launcher';
-import { OptionalSrcProps } from './IFrameWindow';
+import { HtmlIframeProps, OptionalSrcProps } from './IFrameWindow';
 import { WidgetContext } from '../context/widgetContext';
 import { AltContent } from '../types';
 import './styles.scss';
@@ -24,6 +24,11 @@ export interface WidgetLayoutProps extends OptionalSrcProps {
     alignLeft?: boolean;
     closeComponent?: React.ReactNode;
     openComponent?: React.ReactNode;
+    containerStyles?: React.CSSProperties;
+    customSpinner: React.ReactNode | null;
+    IframeProps: HtmlIframeProps;
+    autoOpen?: number;
+    autoOpenCallback?: () => void;
 }
 
 export const WidgetLayout = ({
@@ -36,18 +41,34 @@ export const WidgetLayout = ({
     launcherOpenImg,
     closeComponent,
     openComponent,
-    imagePreview,
     resizable,
     alternateContent,
     fixedPosition,
     alignLeft,
-    ...iframeProps
+    containerStyles,
+    customSpinner,
+    IframeProps,
+    autoOpen,
+    autoOpenCallback,
 }: WidgetLayoutProps) => {
     const { widgetOpenState, visible, persistState } = useContext(WidgetContext);
 
     useEffect(() => {
         document.body.setAttribute('style', `overflow: ${visible ? 'hidden' : 'auto'}`);
     }, [visible]);
+
+    useEffect(() => {
+        if (autoOpen) {
+            setTimeout(() => {
+                if (widgetOpenState === false) {
+                    onToggleConversation();
+                }
+                if (autoOpenCallback) {
+                    autoOpenCallback();
+                }
+            }, autoOpen);
+        }
+    }, []);
 
     return (
         <div
@@ -65,7 +86,9 @@ export const WidgetLayout = ({
                 className={widgetOpenState || !fixedPosition ? 'active' : 'hidden'}
                 resizable={resizable}
                 persistState={persistState}
-                {...iframeProps}
+                containerStyles={containerStyles}
+                IframeProps={IframeProps}
+                customSpinner={customSpinner}
             />
             {fixedPosition && (
                 <>

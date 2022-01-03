@@ -42,14 +42,14 @@ export const App = () => {
                 </div>
             </div>
             <FixedWidget />
-            <AlternateContentWidget />
+            {/* <AlternateContentWidget /> */}
             <ControlledWidget />
         </>
     );
 };
 
 const ControlledWidget = () => {
-    const [open, setOpen] = useState(false);
+    const [open, setOpen] = useState(true);
     const src = (process.env.REACT_APP_PALAVYR_TEST_API_KEY as string) || FALLBACK;
 
     return (
@@ -59,10 +59,12 @@ const ControlledWidget = () => {
             </div>
             <PalavyrChatWidget
                 open={open}
+                autoOpen={3000}
+                autoOpenCallback={() => setOpen(false)}
                 src={src}
                 fixedPosition={false}
                 resizable
-                style={{ height: '540px', width: '340px', marginTop: '1rem' }}
+                containerStyles={{ height: '540px', width: '340px', marginTop: '1rem' }}
             />
         </div>
     );
@@ -72,7 +74,14 @@ const FixedWidget = () => {
     const src = (process.env.REACT_APP_PALAVYR_TEST_API_KEY as string) || FALLBACK;
     return (
         <>
-            <PalavyrChatWidget src={src} fixedPosition resizable startOpen={false} style={{ height: '540px' }} />
+            <PalavyrChatWidget
+                src={src}
+                fixedPosition
+                resizable
+                startOpen={false}
+                containerStyles={{ height: '540px' }}
+                IframeProps={{ delay: 2000 }}
+            />
         </>
     );
 };
@@ -88,7 +97,8 @@ const AlternateContentWidget = () => {
     return (
         <>
             <PalavyrChatWidget
-                style={{ height: '540px', overflow: 'hidden' }}
+                containerStyles={{ height: '540px', overflow: 'hidden' }}
+                IframeProps={{ style: { border: 'none', height: '100%', width: '100%' } }}
                 fixedPosition
                 alignLeft
                 alternateContent={alternateContent}

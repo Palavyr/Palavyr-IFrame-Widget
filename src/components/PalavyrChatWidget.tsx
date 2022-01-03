@@ -1,5 +1,5 @@
 import { WidgetLayout } from './WidgetLayout';
-import { OptionalSrcProps } from './IFrameWindow';
+import { HtmlIframeProps, OptionalSrcProps } from './IFrameWindow';
 import { useEffect, useState } from 'react';
 import { WidgetContext } from '../context/widgetContext';
 import { AnyFunction, AltContent } from '../types';
@@ -21,6 +21,11 @@ export interface PalavyrChatWidgetProps extends OptionalSrcProps {
     closeComponent?: React.ReactNode;
     openComponent?: React.ReactNode;
     persistState?: boolean;
+    containerStyles?: React.CSSProperties;
+    customSpinner?: React.ReactNode | null;
+    IframeProps?: HtmlIframeProps;
+    autoOpen?: number;
+    autoOpenCallback?: () => void;
 }
 
 export const PalavyrChatWidget = ({
@@ -31,6 +36,8 @@ export const PalavyrChatWidget = ({
     closeComponent,
     openComponent,
     alternateContent,
+    autoOpen,
+    autoOpenCallback,
     launcherOpenLabel = 'Open chat',
     launcherCloseLabel = 'Close chat',
     launcherCloseImg = '',
@@ -40,7 +47,9 @@ export const PalavyrChatWidget = ({
     fixedPosition = true,
     alignLeft = false,
     persistState = true,
-    ...iframeProps
+    containerStyles = {},
+    customSpinner = null,
+    IframeProps = {},
 }: PalavyrChatWidgetProps) => {
     const [widgetOpenState, setWidgetOpenState] = useState(false);
     const [visible, _] = useState(undefined);
@@ -77,7 +86,6 @@ export const PalavyrChatWidget = ({
     return (
         <WidgetContext.Provider value={{ widgetOpenState, visible, toggleConversation, persistState }}>
             <WidgetLayout
-                {...iframeProps}
                 src={src}
                 alternateContent={alternateContent}
                 onToggleConversation={toggleConversation}
@@ -91,6 +99,11 @@ export const PalavyrChatWidget = ({
                 resizable={resizable}
                 fixedPosition={fixedPosition}
                 alignLeft={alignLeft}
+                containerStyles={containerStyles}
+                customSpinner={customSpinner}
+                IframeProps={IframeProps}
+                autoOpen={autoOpen}
+                autoOpenCallback={autoOpenCallback}
             />
         </WidgetContext.Provider>
     );

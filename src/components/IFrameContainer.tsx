@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { IFrameWindow, OptionalSrcProps } from './IFrameWindow';
+import { HtmlIframeProps, IFrameWindow, OptionalSrcProps } from './IFrameWindow';
 import classNames from 'classnames';
 import { AltContent } from '../types';
 import React from 'react';
@@ -12,6 +12,9 @@ export interface IFrameContainerProps extends OptionalSrcProps {
     src?: string;
     alternateContent?: AltContent;
     persistState?: boolean;
+    containerStyles?: React.CSSProperties;
+    customSpinner: React.ReactNode | null;
+    IframeProps: HtmlIframeProps;
 }
 
 export const IFrameContainer = ({
@@ -21,7 +24,9 @@ export const IFrameContainer = ({
     resizable,
     widgetOpenState,
     persistState,
-    ...iframeProps
+    containerStyles,
+    customSpinner,
+    IframeProps,
 }: IFrameContainerProps) => {
     const [containerDiv, setContainerDiv] = useState<HTMLElement | null>();
     let startX: number;
@@ -61,15 +66,22 @@ export const IFrameContainer = ({
         position: 'relative',
         boxShadow: '0px 3px 15px rgba(0, 0, 0, 0.2)',
         visibility: widgetOpenState ? 'visible' : 'hidden',
-        ...iframeProps.style,
+        ...containerStyles,
     };
+
+    const [iframeRefreshed, reloadIframe] = useState<boolean>(false);
 
     return (
         <div style={style} onMouseDown={initResize} className={classNames('pcw-conversation-container', className)}>
             {resizable && <div className="pcw-conversation-resizer" />}
             {(persistState || widgetOpenState) && alternateContent}
             {alternateContent === undefined && src && (persistState || widgetOpenState) && (
-                <IFrameWindow src={src} {...iframeProps} />
+                <IFrameWindow
+                    src={src}
+                    customSpinner={customSpinner}
+                    iframeRefreshed={iframeRefreshed}
+                    IframeProps={IframeProps}
+                />
             )}
         </div>
     );
