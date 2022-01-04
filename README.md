@@ -57,13 +57,12 @@ There are essentially two use cases:
 ## Package details
 
 ```
-npm notice === Tarball Details ===
-npm notice name:          palavyr-chat-widget
-npm notice version:       0.3.3
-npm notice filename:      palavyr-chat-widget-0.3.3.tgz
-npm notice package size:  13.5 kB
-npm notice unpacked size: 53.0 kB
-npm notice shasum:        ef973403fb66bc229a50644993ada19531edd4eb
-npm notice integrity:     sha512-Xl7Kk55eJ4m4V[...]UQNhiHpywfIYg==
-npm notice total files:   **42**
+name:          palavyr-chat-widget
+version:       0.4.0
+filename:      palavyr-chat-widget-0.4.0.tgz
+package size:  17.1 kB
+unpacked size: 73.0 kB
+shasum:        9cd8a469a2231f6ad9e667ce7147dc4ec688b08d
+integrity:     sha512-Fd0kEpVTvhpon[...]Jl/0zMlPMpQKQ==
+total files:   46
 ```
