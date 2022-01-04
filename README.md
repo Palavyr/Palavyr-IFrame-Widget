@@ -58,8 +58,8 @@ There are essentially two use cases:
 
 ```
 name:          palavyr-chat-widget
-version:       0.4.0
-filename:      palavyr-chat-widget-0.4.0.tgz
+version:       1.0.0
+filename:      palavyr-chat-widget-1.0.0.tgz
 package size:  17.1 kB
 unpacked size: 73.0 kB
 shasum:        9cd8a469a2231f6ad9e667ce7147dc4ec688b08d
