@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useState } from 'react';
 import { PalavyrChatWidget } from '../src/index';
 
@@ -31,40 +31,48 @@ export const App = () => {
                     justifyContent: 'space-between',
                 }}
             >
-                <div style={{ paddingLeft: '5rem' }}>
+                <div style={{ paddingLeft: '6rem' }}>
                     <h3>Alternate Content</h3>
                 </div>
                 <div>
                     <h3>Controlled</h3>
                 </div>
-                <div style={{ paddingRight: '5rem' }}>
-                    <h3>Fixed Position Right</h3>
+                <div style={{ paddingRight: '6rem' }}>
+                    <h3>Fixed Position Right with Auto Open</h3>
                 </div>
             </div>
             <FixedWidget />
-            {/* <AlternateContentWidget /> */}
+            <AlternateContentWidget />
             <ControlledWidget />
         </>
     );
 };
 
 const ControlledWidget = () => {
-    const [open, setOpen] = useState(true);
+    const [open, setOpen] = useState<boolean>(false);
+    const [disabled, setDisabled] = useState<boolean>(true);
+
     const src = (process.env.REACT_APP_PALAVYR_TEST_API_KEY as string) || FALLBACK;
+
+    useEffect(() => {
+        setTimeout(() => {
+            setDisabled(false);
+        }, 2000);
+    }, []);
 
     return (
         <div className="container">
-            <div className="button" onClick={() => setOpen(!open)}>
-                {open ? 'Close' : 'Open'}
-            </div>
+            <button disabled={disabled} className="button" onClick={() => setOpen(!open)}>
+                {open ? 'Click to Close' : 'Click to Open'}
+            </button>
             <PalavyrChatWidget
+                IframeProps={{ id: 'pcw-iframe-1' }}
                 open={open}
-                autoOpen={3000}
-                autoOpenCallback={() => setOpen(false)}
+                setOpen={setOpen}
                 src={src}
                 fixedPosition={false}
                 resizable
-                containerStyles={{ height: '540px', width: '340px', marginTop: '1rem' }}
+                containerStyles={{ height: '540px', width: '360px', marginTop: '1rem' }}
             />
         </div>
     );
@@ -75,12 +83,13 @@ const FixedWidget = () => {
     return (
         <>
             <PalavyrChatWidget
+                IframeProps={{ id: 'pcw-iframe-2' }}
                 src={src}
                 fixedPosition
                 resizable
                 startOpen={false}
                 containerStyles={{ height: '540px' }}
-                IframeProps={{ delay: 2000 }}
+                autoOpen={3000}
             />
         </>
     );

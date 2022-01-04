@@ -1,4 +1,4 @@
-import { useContext, useEffect } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import classNames from 'classnames';
 import React from 'react';
 
@@ -51,7 +51,8 @@ export const WidgetLayout = ({
     autoOpen,
     autoOpenCallback,
 }: WidgetLayoutProps) => {
-    const { widgetOpenState, visible, persistState } = useContext(WidgetContext);
+    const { widgetOpenState, setWidgetOpenState, visible, persistState } = useContext(WidgetContext);
+    const [iframeRefreshed, reloadIframe] = useState<boolean>(false);
 
     useEffect(() => {
         document.body.setAttribute('style', `overflow: ${visible ? 'hidden' : 'auto'}`);
@@ -60,13 +61,12 @@ export const WidgetLayout = ({
     useEffect(() => {
         if (autoOpen) {
             setTimeout(() => {
-                if (widgetOpenState === false) {
-                    onToggleConversation();
-                }
+                setWidgetOpenState(true);
                 if (autoOpenCallback) {
                     autoOpenCallback();
                 }
             }, autoOpen);
+            reloadIframe(!iframeRefreshed);
         }
     }, []);
 
@@ -89,6 +89,8 @@ export const WidgetLayout = ({
                 containerStyles={containerStyles}
                 IframeProps={IframeProps}
                 customSpinner={customSpinner}
+                reloadIframe={reloadIframe}
+                iframeRefreshed={iframeRefreshed}
             />
             {fixedPosition && (
                 <>

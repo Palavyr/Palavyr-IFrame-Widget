@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, SetStateAction, Dispatch } from 'react';
 import { HtmlIframeProps, IFrameWindow, OptionalSrcProps } from './IFrameWindow';
 import classNames from 'classnames';
 import { AltContent } from '../types';
@@ -15,6 +15,8 @@ export interface IFrameContainerProps extends OptionalSrcProps {
     containerStyles?: React.CSSProperties;
     customSpinner: React.ReactNode | null;
     IframeProps: HtmlIframeProps;
+    reloadIframe: Dispatch<SetStateAction<boolean>>;
+    iframeRefreshed: boolean;
 }
 
 export const IFrameContainer = ({
@@ -27,6 +29,8 @@ export const IFrameContainer = ({
     containerStyles,
     customSpinner,
     IframeProps,
+    reloadIframe,
+    iframeRefreshed,
 }: IFrameContainerProps) => {
     const [containerDiv, setContainerDiv] = useState<HTMLElement | null>();
     let startX: number;
@@ -69,8 +73,6 @@ export const IFrameContainer = ({
         ...containerStyles,
     };
 
-    const [iframeRefreshed, reloadIframe] = useState<boolean>(false);
-
     return (
         <div style={style} onMouseDown={initResize} className={classNames('pcw-conversation-container', className)}>
             {resizable && <div className="pcw-conversation-resizer" />}
@@ -81,6 +83,7 @@ export const IFrameContainer = ({
                     customSpinner={customSpinner}
                     iframeRefreshed={iframeRefreshed}
                     IframeProps={IframeProps}
+                    reloadIframe={reloadIframe}
                 />
             )}
         </div>

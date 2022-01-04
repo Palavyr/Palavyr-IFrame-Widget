@@ -1,6 +1,6 @@
 import { WidgetLayout } from './WidgetLayout';
 import { HtmlIframeProps, OptionalSrcProps } from './IFrameWindow';
-import { useEffect, useState } from 'react';
+import { Dispatch, SetStateAction, useEffect, useState } from 'react';
 import { WidgetContext } from '../context/widgetContext';
 import { AnyFunction, AltContent } from '../types';
 import React from 'react';
@@ -26,6 +26,7 @@ export interface PalavyrChatWidgetProps extends OptionalSrcProps {
     IframeProps?: HtmlIframeProps;
     autoOpen?: number;
     autoOpenCallback?: () => void;
+    setOpen?: Dispatch<SetStateAction<boolean>>;
 }
 
 export const PalavyrChatWidget = ({
@@ -33,17 +34,18 @@ export const PalavyrChatWidget = ({
     customLauncher,
     onToggle,
     open,
+    setOpen,
     closeComponent,
     openComponent,
     alternateContent,
     autoOpen,
     autoOpenCallback,
+    startOpen,
     launcherOpenLabel = 'Open chat',
     launcherCloseLabel = 'Close chat',
     launcherCloseImg = '',
     launcherOpenImg = '',
     resizable = true,
-    startOpen = false,
     fixedPosition = true,
     alignLeft = false,
     persistState = true,
@@ -54,14 +56,38 @@ export const PalavyrChatWidget = ({
     const [widgetOpenState, setWidgetOpenState] = useState(false);
     const [visible, _] = useState(undefined);
 
+    if (open && setOpen === undefined) throw new Error("'setOpen' is required when 'open' is true");
+    if (setOpen && open === undefined) throw new Error("'open' is required when 'setOpen' is true");
+    if (open && setOpen && autoOpen !== undefined)
+        throw new Error("'autoOpen' is not compatible with 'open' and 'setOpen'");
+    if (open && setOpen && autoOpenCallback !== undefined)
+        throw new Error("'autoOpenCallback' is not compatible with 'open' and 'setOpen'");
+    if (open && setOpen && IframeProps.delay !== undefined)
+        throw new Error("'IframeProps.delay' is not compatible with 'open' and 'setOpen'");
+
     useEffect(() => {
-        open = startOpen;
+        if (!autoOpen) {
+            if (startOpen !== undefined && setOpen) {
+                setOpen(startOpen);
+            } else if (startOpen !== undefined) {
+                open = startOpen;
+            }
 
-        if (!fixedPosition) {
-            open = true;
+            if (!fixedPosition) {
+                if (setOpen) {
+                    setOpen(true);
+                } else {
+                    open = true;
+                }
+            }
+
+            if (open !== undefined) {
+                setWidgetOpenState(open);
+            }
         }
-
-        setWidgetOpenState(open);
+        if (autoOpenCallback) {
+            autoOpenCallback();
+        }
     }, [startOpen]);
 
     useEffect(() => {
@@ -84,7 +110,9 @@ export const PalavyrChatWidget = ({
     }
 
     return (
-        <WidgetContext.Provider value={{ widgetOpenState, visible, toggleConversation, persistState }}>
+        <WidgetContext.Provider
+            value={{ widgetOpenState, setWidgetOpenState, visible, toggleConversation, persistState }}
+        >
             <WidgetLayout
                 src={src}
                 alternateContent={alternateContent}
