@@ -3,7 +3,7 @@ import { HtmlIframeProps, IFrameWindow, OptionalSrcProps } from './IFrameWindow'
 import classNames from 'classnames';
 import { AltContent } from '../types';
 import React from 'react';
-import './styles.scss';
+import './styles.css';
 
 export interface IFrameContainerProps extends OptionalSrcProps {
     widgetOpenState: boolean;

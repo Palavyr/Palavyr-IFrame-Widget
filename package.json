@@ -16,9 +16,12 @@
   },
   "scripts": {
     "pub": "npm run build && npm run build-demo && npm run deploy && npm publish",
-    "start": "webpack serve --config webpack.config.demo.js",
-    "build": "rimraf dist && tsc -p prod.tsconfig.json && copyfiles -u 2 src/components/styles.scss dist/components/ && copyfiles -u 1 src/components/assets/* dist/ && postcss-scss dist/components/styles.scss -o dist/components/styles.css",
+    "start": "node-sass demo/app.scss -o demo/ && webpack serve --config webpack.config.demo.js",
+    "scss": "node-sass --watch src/components/styles.scss -o src/components/",
+    "build": "rimraf dist && npm run build-scss && tsc -p prod.tsconfig.json && npm run build-copyfiles",
     "build-demo": "webpack --config ./webpack.config.demo.js",
+    "build-scss": "node-sass src/components/styles.scss -o src/components/",
+    "build-copyfiles": "copyfiles -u 2 src/components/styles.css dist/components/ && copyfiles -u 1 src/components/assets/* dist/",
     "deploy": "gh-pages -d build",
     "format": "prettier --write \"src/**/*.ts\" \"src/**/*.js\"",
     "lint": "tslint -p prod.tsconfig.json"
