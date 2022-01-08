@@ -1,6 +1,6 @@
 import { Dispatch, IframeHTMLAttributes, SetStateAction, useEffect, useState } from 'react';
 import React from 'react';
-import './styles.css';
+import './styles.scss';
 import { DefaultSpinner } from './DefaultSpinner';
 
 export type HtmlIframeProps = React.DetailedHTMLProps<IframeHTMLAttributes<HTMLIFrameElement>, HTMLIFrameElement> & {

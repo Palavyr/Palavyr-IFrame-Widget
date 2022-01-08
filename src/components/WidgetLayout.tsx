@@ -7,7 +7,7 @@ import { Launcher } from './Launcher';
 import { HtmlIframeProps, OptionalSrcProps } from './IFrameWindow';
 import { WidgetContext } from '../context/widgetContext';
 import { AltContent } from '../types';
-import './styles.css';
+import './styles.scss';
 
 export interface WidgetLayoutProps extends OptionalSrcProps {
     onToggleConversation(...args: any): any;

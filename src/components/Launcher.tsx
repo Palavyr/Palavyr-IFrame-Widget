@@ -2,7 +2,7 @@ import { useContext } from 'react';
 import classNames from 'classnames';
 import { WidgetContext } from '../context/widgetContext';
 import React from 'react';
-import './styles.css';
+import './styles.scss';
 
 import openLauncher from './assets/launcher_button.svg';
 import close from './assets/clear-button.svg';
