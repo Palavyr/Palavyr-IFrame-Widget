@@ -6,10 +6,14 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const Dotenv = require('dotenv-webpack');
 
 module.exports = {
-    entry: {
-        main: path.resolve(__dirname, 'demo/index.tsx'),
-        vendor: ['react', 'react-dom'],
-    },
+    entry: [
+        './demo/index.tsx',
+        // {
+        //     main: path.resolve(__dirname, 'demo/index.tsx'),
+        //     vendor: ['react', 'react-dom'],
+        // },
+        './demo/app.css',
+    ],
     target: 'web',
     mode: 'development',
     output: {
@@ -33,29 +37,9 @@ module.exports = {
                 use: ['babel-loader', { loader: 'ts-loader', options: { configFile: 'demo.tsconfig.json' } }],
             },
             {
-                test: /\.scss$/,
+                test: /\.css$/,
                 exclude: /node_modules/,
-                use: [
-                    'style-loader',
-                    'css-loader',
-                    {
-                        loader: 'postcss-loader',
-                        options: {
-                            postcssOptions: {
-                                plugins: ['postcss-preset-env'],
-                            },
-                        },
-                    },
-                    {
-                        loader: 'sass-loader',
-                        options: {
-                            implementation: require('node-sass'),
-                            sassOptions: {
-                                includePaths: [path.resolve(__dirname, 'src/'), path.resolve(__dirname, 'dev/')],
-                            },
-                        },
-                    },
-                ],
+                use: ['style-loader', 'css-loader'],
             },
             {
                 test: /\.(jpg|png|gif|svg)$/,
