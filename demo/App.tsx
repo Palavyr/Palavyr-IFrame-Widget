@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { useState } from 'react';
 import { PalavyrChatWidget } from '../src/index';
 
-import './app.css';
+import './app.scss';
 import paul from './p.jpg';
 
 const FALLBACK = 'https://www.palavyr.com';
