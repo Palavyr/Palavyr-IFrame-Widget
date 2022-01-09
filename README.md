@@ -42,7 +42,7 @@ There are essentially two use cases:
 | launchComponent    | React.ReactNode                                            | undefined     | Component rendered as the clickable button to open and close the widget when open                                                                                                                                                                     |
 | persistState       | boolean                                                    | true          | If true, the state of the container will be maintained (i.e. will not be unmounted) when the launcher is closed e.g. this is useful if you'd like to persist the same conversation across different pages (and the widget sits outside of the router) |
 | containerStyles    | React.CSSProperties                                        | undefined     | Styles applied ot the div that contains the iframe. (There is only one such outer div)                                                                                                                                                                |
-| containerClassName | React.CSSProperties                                        | ''            | className applied ot the div that contains the iframe. (There is only one such outer div)                                                                                                                                                                |
+| containerClassName | React.CSSProperties                                        | ''            | className applied ot the div that contains the iframe. (There is only one such outer div)                                                                                                                                                             |
 | customSpinner      | React.ReactNode or `null`                                  | null          | An optional component that is shown when the iframe is loading. A default spinner is used if this not provided.                                                                                                                                       |
 | IframeProps        | React's IFrame Props -- see below                          | undefined     | Additional props that are specific to the React iframe element may be passed for further customization.                                                                                                                                               |
 | autoOpen           | number                                                     | undefined     | When defined, this causes the widget to automatically open after the provided number of milliseconds                                                                                                                                                  |
@@ -58,12 +58,13 @@ There are essentially two use cases:
 ## Package details
 
 ```
+=== Tarball Details ===
 name:          palavyr-chat-widget
-version:       1.0.1
-filename:      palavyr-chat-widget-1.0.1.tgz
-package size:  17.1 kB
-unpacked size: 73.0 kB
-shasum:        9cd8a469a2231f6ad9e667ce7147dc4ec688b08d
-integrity:     sha512-Fd0kEpVTvhpon[...]Jl/0zMlPMpQKQ==
-total files:   46
+version:       1.3.0
+filename:      palavyr-chat-widget-1.3.0.tgz
+package size:  22.3 kB
+unpacked size: 125.2 kB
+shasum:        65acf0063e433e2f3b01a9bc9686fbfad76826de
+integrity:     sha512-iRl66pH/uu//t[...]sz8QDoWhrTZjA==
+total files:   15
 ```
