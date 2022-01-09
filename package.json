@@ -1,7 +1,7 @@
 {
   "name": "palavyr-chat-widget",
   "private": false,
-  "version": "1.2.1",
+  "version": "1.2.3",
   "repository": "git@github.com:Palavyr/palavyr-chat-widget.git",
   "bugs": {
     "url": "https://github.com/Palavyr/palavyr-chat-widget/issues/new/choose"
@@ -20,7 +20,7 @@
   "scripts": {
     "build": "rimraf dist && rollup -c",
     "demo": "webpack serve --config webpack.config.demo.js",
-    "pub": "npm run build && npm run _build-demo && npm run deploy && npm publish",
+    "pub": "npm run build && npm run _build-demo && npm run _deploy && npm publish",
     "format": "npm run _prettify && npm run _lint",
     "_build-demo": "webpack --config ./webpack.config.demo.js",
     "_deploy": "gh-pages -d build",
@@ -73,5 +73,10 @@
     "chat",
     "widget",
     "javascript"
+  ],
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not op_mini all"
   ]
 }

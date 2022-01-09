@@ -8,6 +8,12 @@ import image from '@rollup/plugin-image';
 
 // https://medium.com/@martin_hotell/typescript-library-tips-rollup-your-types-995153cc81c7
 
+
+const sassOptions = {
+    processor: () => postcss([autoprefixer({ overrideBrowserslist: 'Edge 18' })]),
+
+}
+
 const plugins = [
     external(),
     resolve(),
