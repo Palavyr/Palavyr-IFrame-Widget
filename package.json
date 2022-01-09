@@ -19,10 +19,10 @@
   "description": "Palavyr Chat Widget - a react component that allows you to place a chat widget compatible with Palavyr in your website.",
   "scripts": {
     "build": "rimraf dist && rollup -c",
-    "demo": "webpack serve --config webpack.config.demo.js",
+    "demo": "webpack serve --config ./demo/webpack.config.demo.js",
     "pub": "npm run build && npm run _build-demo && npm run _deploy && npm publish",
     "format": "npm run _prettify && npm run _lint",
-    "_build-demo": "webpack --config ./webpack.config.demo.js",
+    "_build-demo": "webpack --config ./demo/webpack.config.demo.js",
     "_deploy": "gh-pages -d build",
     "_prettify": "prettier --write src/**/*.{ts,tsx}",
     "_lint": "tslint -p tsconfig.json"
