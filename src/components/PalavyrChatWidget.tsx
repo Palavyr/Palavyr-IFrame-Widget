@@ -1,13 +1,11 @@
 import { WidgetLayout } from './WidgetLayout';
 import { HtmlIframeProps, OptionalSrcProps } from './IFrameWindow';
 import { Dispatch, SetStateAction, useEffect, useState } from 'react';
-import { WidgetContext } from '../context/widgetContext';
-import { AnyFunction, AltContent } from '../types';
+import { WidgetContext } from './WidgetContext';
 import React from 'react';
+import { AltContent, AnyFunction } from '../types';
 
 export interface PalavyrChatWidgetProps extends OptionalSrcProps {
-    customLauncher?: AnyFunction;
-    onToggle?: AnyFunction;
     launcherOpenLabel?: string;
     launcherCloseLabel?: string;
     launcherCloseImg?: string;
@@ -25,6 +23,9 @@ export interface PalavyrChatWidgetProps extends OptionalSrcProps {
     customSpinner?: React.ReactNode | null;
     IframeProps?: HtmlIframeProps;
     autoOpen?: number;
+    containerClassName?: string;
+    customLauncher?: AnyFunction;
+    onToggle?: AnyFunction;
     autoOpenCallback?: () => void;
     setOpen?: Dispatch<SetStateAction<boolean>>;
 }
@@ -41,6 +42,7 @@ export const PalavyrChatWidget = ({
     autoOpen,
     autoOpenCallback,
     startOpen,
+    containerClassName = '',
     launcherOpenLabel = 'Open chat',
     launcherCloseLabel = 'Close chat',
     launcherCloseImg = '',
@@ -115,6 +117,7 @@ export const PalavyrChatWidget = ({
         >
             <WidgetLayout
                 src={src}
+                containerClassName={containerClassName}
                 alternateContent={alternateContent}
                 onToggleConversation={toggleConversation}
                 customLauncher={customLauncher}

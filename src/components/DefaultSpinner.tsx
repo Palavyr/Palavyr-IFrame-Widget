@@ -4,7 +4,7 @@ import React from 'react';
 
 export const DefaultSpinner = () => (
     <div
-    id = "pcw-default-spinner"
+        id="pcw-default-spinner"
         style={{
             height: '100%',
             width: '100%',

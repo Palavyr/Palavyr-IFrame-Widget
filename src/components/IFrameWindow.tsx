@@ -1,19 +1,17 @@
 import { Dispatch, IframeHTMLAttributes, SetStateAction, useEffect, useState } from 'react';
 import React from 'react';
-import './styles.css';
+import './styles.scss';
 import { DefaultSpinner } from './DefaultSpinner';
 
 export type HtmlIframeProps = React.DetailedHTMLProps<IframeHTMLAttributes<HTMLIFrameElement>, HTMLIFrameElement> & {
     delay?: number;
 };
 
-export interface BaseFrameProps {}
-
-export interface OptionalSrcProps extends BaseFrameProps {
+export interface OptionalSrcProps {
     src?: string;
 }
 
-export interface DefiniteFrameProps extends BaseFrameProps {
+export interface DefiniteFrameProps {
     iframeRefreshed: boolean;
     src: string;
     customSpinner: React.ReactNode | null;

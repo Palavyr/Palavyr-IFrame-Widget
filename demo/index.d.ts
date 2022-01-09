@@ -1,2 +1,1 @@
-// ignore this
-declare module '*.jpg';
+export {};

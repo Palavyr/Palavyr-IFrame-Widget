@@ -1,4 +1,2 @@
-import { ElementType } from "react";
-
-declare const PalavyrChatWidget: ElementType;
-export as namespace PalavyrChatWidget;
+import { PalavyrChatWidget } from './components/PalavyrChatWidget';
+export default PalavyrChatWidget;

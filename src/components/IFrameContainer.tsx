@@ -1,9 +1,9 @@
 import { useState, useEffect, SetStateAction, Dispatch } from 'react';
 import { HtmlIframeProps, IFrameWindow, OptionalSrcProps } from './IFrameWindow';
 import classNames from 'classnames';
-import { AltContent } from '../types';
 import React from 'react';
-import './styles.css';
+import './styles.scss';
+import { AltContent } from '../types';
 
 export interface IFrameContainerProps extends OptionalSrcProps {
     widgetOpenState: boolean;
@@ -63,7 +63,7 @@ export const IFrameContainer = ({
         window.removeEventListener('mouseup', stopResize, false);
     };
 
-    const style: React.CSSProperties = {
+    const styles: React.CSSProperties = {
         borderRadius: '10px',
         minWidth: '355px',
         maxWidth: '100vw',
@@ -74,7 +74,7 @@ export const IFrameContainer = ({
     };
 
     return (
-        <div style={style} onMouseDown={initResize} className={classNames('pcw-conversation-container', className)}>
+        <div style={styles} onMouseDown={initResize} className={classNames('pcw-conversation-container', className)}>
             {resizable && <div className="pcw-conversation-resizer" />}
             {(persistState || widgetOpenState) && alternateContent}
             {alternateContent === undefined && src && (persistState || widgetOpenState) && (
