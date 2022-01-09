@@ -8,6 +8,7 @@ import { HtmlIframeProps, OptionalSrcProps } from './IFrameWindow';
 import { WidgetContext } from './WidgetContext';
 import './styles.scss';
 import { AltContent } from '../types';
+import classnames from 'classnames';
 
 export interface WidgetLayoutProps extends OptionalSrcProps {
     onToggleConversation(...args: any): any;
@@ -29,6 +30,7 @@ export interface WidgetLayoutProps extends OptionalSrcProps {
     IframeProps: HtmlIframeProps;
     autoOpen?: number;
     autoOpenCallback?: () => void;
+    containerClassName?: string;
 }
 
 export const WidgetLayout = ({
@@ -49,6 +51,7 @@ export const WidgetLayout = ({
     customSpinner,
     IframeProps,
     autoOpen,
+    containerClassName,
     autoOpenCallback,
 }: WidgetLayoutProps) => {
     const { widgetOpenState, setWidgetOpenState, visible, persistState } = useContext(WidgetContext);
@@ -83,7 +86,7 @@ export const WidgetLayout = ({
                 src={src}
                 alternateContent={alternateContent}
                 widgetOpenState={widgetOpenState}
-                className={widgetOpenState || !fixedPosition ? 'active' : 'hidden'}
+                className={classnames(containerClassName ?? '', widgetOpenState || !fixedPosition ? 'active' : 'hidden')}
                 resizable={resizable}
                 persistState={persistState}
                 containerStyles={containerStyles}

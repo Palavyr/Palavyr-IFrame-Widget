@@ -27,7 +27,7 @@ module.exports = {
             {
                 test: /\.ts(x?)$/,
                 exclude: /node_modules/,
-                use: ['babel-loader', { loader: 'ts-loader', options: { configFile: 'tsconfig.json' } }],
+                use: ['babel-loader', { loader: 'ts-loader', options: { configFile: 'demo.tsconfig.json' } }],
             },
             {
                 test: /\.scss$/,
