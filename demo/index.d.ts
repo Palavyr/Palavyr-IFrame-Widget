@@ -1,2 +1,4 @@
-// ignore this
-declare module '*.jpg';
+declare module '*.jpg' {
+    const content: any;
+    export default content;
+}

@@ -27,12 +27,12 @@ module.exports = {
             {
                 test: /\.ts(x?)$/,
                 exclude: /node_modules/,
-                use: ['babel-loader', { loader: 'ts-loader', options: { configFile: 'demo.tsconfig.json' } }],
+                use: ['babel-loader', { loader: 'ts-loader', options: { configFile: 'tsconfig.json' } }],
             },
             {
                 test: /\.scss$/,
                 exclude: /node_modules/,
-                use: ['style-loader', 'css-loader'],
+                use: ['style-loader', 'css-loader', 'sass-loader'],
             },
             {
                 test: /\.(jpg|png|gif|svg)$/,
@@ -45,7 +45,7 @@ module.exports = {
         new Dotenv({ path: '.env.development' }),
         new webpack.HotModuleReplacementPlugin(),
         new HtmlWebpackPlugin({
-            template: './public/index.html',
+            template: './demo/public/index.html',
             file: 'index.html',
         }),
         new webpack.ProvidePlugin({

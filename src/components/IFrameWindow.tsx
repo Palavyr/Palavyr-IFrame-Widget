@@ -7,13 +7,11 @@ export type HtmlIframeProps = React.DetailedHTMLProps<IframeHTMLAttributes<HTMLI
     delay?: number;
 };
 
-export interface BaseFrameProps {}
-
-export interface OptionalSrcProps extends BaseFrameProps {
+export interface OptionalSrcProps {
     src?: string;
 }
 
-export interface DefiniteFrameProps extends BaseFrameProps {
+export interface DefiniteFrameProps {
     iframeRefreshed: boolean;
     src: string;
     customSpinner: React.ReactNode | null;
