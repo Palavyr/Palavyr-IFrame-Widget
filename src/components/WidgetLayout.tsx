@@ -5,9 +5,9 @@ import React from 'react';
 import { IFrameContainer } from './IFrameContainer';
 import { Launcher } from './Launcher';
 import { HtmlIframeProps, OptionalSrcProps } from './IFrameWindow';
-import { WidgetContext } from '../context/widgetContext';
-import { AltContent } from '../types';
+import { WidgetContext } from './WidgetContext';
 import './styles.scss';
+import { AltContent } from '../types';
 
 export interface WidgetLayoutProps extends OptionalSrcProps {
     onToggleConversation(...args: any): any;

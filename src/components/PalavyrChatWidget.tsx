@@ -1,9 +1,9 @@
 import { WidgetLayout } from './WidgetLayout';
 import { HtmlIframeProps, OptionalSrcProps } from './IFrameWindow';
 import { Dispatch, SetStateAction, useEffect, useState } from 'react';
-import { WidgetContext } from '../context/widgetContext';
-import { AnyFunction, AltContent } from '../types';
+import { WidgetContext } from './WidgetContext';
 import React from 'react';
+import { AltContent, AnyFunction } from '../types';
 
 export interface PalavyrChatWidgetProps extends OptionalSrcProps {
     customLauncher?: AnyFunction;

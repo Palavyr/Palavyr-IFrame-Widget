@@ -1,9 +1,9 @@
 import { useState, useEffect, SetStateAction, Dispatch } from 'react';
 import { HtmlIframeProps, IFrameWindow, OptionalSrcProps } from './IFrameWindow';
 import classNames from 'classnames';
-import { AltContent } from '../types';
 import React from 'react';
 import './styles.scss';
+import { AltContent } from '../types';
 
 export interface IFrameContainerProps extends OptionalSrcProps {
     widgetOpenState: boolean;

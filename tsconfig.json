@@ -1,0 +1,12 @@
+{
+    "include": ["src/**/*", "src/index.d.ts"],
+    "exclude": ["node_modules", "build", "dist", "example", "rollup.config.js"],
+    "compilerOptions": {
+        "strict": true,
+        "esModuleInterop": true,
+        "jsx": "react",
+        "declaration": true,
+        "outDir": "./types",
+        "moduleResolution": "node"
+    }
+}
