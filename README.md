@@ -60,11 +60,9 @@ There are essentially two use cases:
 ```
 === Tarball Details ===
 name:          palavyr-chat-widget
-version:       1.3.0
-filename:      palavyr-chat-widget-1.3.0.tgz
+version:       1.4.0
+filename:      palavyr-chat-widget-1.4.0.tgz
 package size:  22.3 kB
 unpacked size: 125.2 kB
-shasum:        65acf0063e433e2f3b01a9bc9686fbfad76826de
-integrity:     sha512-iRl66pH/uu//t[...]sz8QDoWhrTZjA==
 total files:   15
 ```
