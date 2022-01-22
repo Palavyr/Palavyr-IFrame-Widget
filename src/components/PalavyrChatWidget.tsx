@@ -28,6 +28,9 @@ export interface PalavyrChatWidgetProps extends OptionalSrcProps {
     onToggle?: (widgetOpenState: boolean, setWidgetOpenState: SetState<boolean>) => void;
     autoOpenCallback?: () => void;
     setOpen?: Dispatch<SetStateAction<boolean>>;
+    disableBounce?: boolean;
+    openImgProps?: React.ImgHTMLAttributes<HTMLImageElement>;
+    closeImgProps?: React.ImgHTMLAttributes<HTMLImageElement>;
 }
 
 export const PalavyrChatWidget = ({
@@ -54,6 +57,9 @@ export const PalavyrChatWidget = ({
     containerStyles = {},
     customSpinner = null,
     IframeProps = {},
+    disableBounce = false,
+    openImgProps = {},
+    closeImgProps = {},
 }: PalavyrChatWidgetProps) => {
     const [widgetOpenState, setWidgetOpenState] = useState(false);
     const [visible, _] = useState(undefined);
@@ -135,6 +141,9 @@ export const PalavyrChatWidget = ({
                 IframeProps={IframeProps}
                 autoOpen={autoOpen}
                 autoOpenCallback={autoOpenCallback}
+                disableBounce={disableBounce}
+                openImgProps={openImgProps}
+                closeImgProps={closeImgProps}
             />
         </WidgetContext.Provider>
     );

@@ -31,6 +31,9 @@ export interface WidgetLayoutProps extends OptionalSrcProps {
     autoOpen?: number;
     autoOpenCallback?: () => void;
     containerClassName?: string;
+    disableBounce?: boolean;
+    openImgProps?: React.ImgHTMLAttributes<HTMLImageElement>;
+    closeImgProps?: React.ImgHTMLAttributes<HTMLImageElement>;
 }
 
 export const WidgetLayout = ({
@@ -53,6 +56,9 @@ export const WidgetLayout = ({
     autoOpen,
     containerClassName,
     autoOpenCallback,
+    disableBounce,
+    openImgProps,
+    closeImgProps,
 }: WidgetLayoutProps) => {
     const { widgetOpenState, setWidgetOpenState, visible, persistState } = useContext(WidgetContext);
     const [iframeRefreshed, reloadIframe] = useState<boolean>(false);
@@ -86,7 +92,10 @@ export const WidgetLayout = ({
                 src={src}
                 alternateContent={alternateContent}
                 widgetOpenState={widgetOpenState}
-                className={classnames(containerClassName ?? '', widgetOpenState || !fixedPosition ? 'active' : 'hidden')}
+                className={classnames(
+                    containerClassName ?? '',
+                    widgetOpenState || !fixedPosition ? 'active' : 'hidden',
+                )}
                 resizable={resizable}
                 persistState={persistState}
                 containerStyles={containerStyles}
@@ -109,6 +118,9 @@ export const WidgetLayout = ({
                             openImg={launcherOpenImg}
                             closeComponent={closeComponent}
                             openComponent={openComponent}
+                            disableBounce={disableBounce}
+                            openImgProps={openImgProps}
+                            closeImgProps={closeImgProps}
                         />
                     )}
                 </>

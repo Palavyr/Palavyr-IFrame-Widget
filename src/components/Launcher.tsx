@@ -16,6 +16,9 @@ export interface LauncherProps {
     alignLeft?: boolean;
     closeComponent?: React.ReactNode;
     openComponent?: React.ReactNode;
+    disableBounce?: boolean;
+    openImgProps?: React.ImgHTMLAttributes<HTMLImageElement>;
+    closeImgProps?: React.ImgHTMLAttributes<HTMLImageElement>;
 }
 
 export const Launcher = ({
@@ -27,6 +30,9 @@ export const Launcher = ({
     openLabel,
     closeLabel,
     alignLeft,
+    disableBounce,
+    openImgProps,
+    closeImgProps
 }: LauncherProps) => {
     const { widgetOpenState } = useContext(WidgetContext);
 
@@ -42,18 +48,18 @@ export const Launcher = ({
             style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}
             className={classNames({
                 'pcw-hide-sm': widgetOpenState === true,
-                'pcw-animation': widgetOpenState === false || widgetOpenState === undefined,
+                'pcw-animation': !disableBounce && (widgetOpenState === false || widgetOpenState === undefined),
                 'pcw-launcher': !alignLeft,
                 'pcw-launcher-left': alignLeft,
             })}
             onClick={toggleChat}
         >
             {widgetOpenState ? (
-                <>{closeComponent ?? <img src={closeImg || close} className="pcw-close-launcher" alt={openLabel} />}</>
+                <>{closeComponent ?? <img src={closeImg || close} className="pcw-close-launcher" alt={openLabel} {...closeImgProps} />}</>
             ) : (
                 <>
                     {openComponent ?? (
-                        <img src={openImg || openLauncher} className="pcw-open-launcher" alt={closeLabel} />
+                        <img src={openImg || openLauncher} className="pcw-open-launcher" alt={closeLabel} {...openImgProps} />
                     )}
                 </>
             )}
