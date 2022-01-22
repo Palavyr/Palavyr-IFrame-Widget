@@ -25,7 +25,7 @@ export interface PalavyrChatWidgetProps extends OptionalSrcProps {
     autoOpen?: number;
     containerClassName?: string;
     customLauncher?: AnyFunction;
-    onToggle: (widgetOpenState: boolean, setWidgetOpenState: SetState<boolean>) => void;
+    onToggle?: (widgetOpenState: boolean, setWidgetOpenState: SetState<boolean>) => void;
     autoOpenCallback?: () => void;
     setOpen?: Dispatch<SetStateAction<boolean>>;
 }
