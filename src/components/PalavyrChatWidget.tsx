@@ -3,7 +3,7 @@ import { HtmlIframeProps, OptionalSrcProps } from './IFrameWindow';
 import { Dispatch, SetStateAction, useEffect, useState } from 'react';
 import { WidgetContext } from './WidgetContext';
 import React from 'react';
-import { AltContent, AnyFunction } from '../types';
+import { AltContent, AnyFunction, SetState } from '../types';
 
 export interface PalavyrChatWidgetProps extends OptionalSrcProps {
     launcherOpenLabel?: string;
@@ -25,7 +25,7 @@ export interface PalavyrChatWidgetProps extends OptionalSrcProps {
     autoOpen?: number;
     containerClassName?: string;
     customLauncher?: AnyFunction;
-    onToggle?: AnyFunction;
+    onToggle: (widgetOpenState: boolean, setWidgetOpenState: SetState<boolean>) => void;
     autoOpenCallback?: () => void;
     setOpen?: Dispatch<SetStateAction<boolean>>;
 }
@@ -104,7 +104,7 @@ export const PalavyrChatWidget = ({
         setWidgetOpenState(!widgetOpenState);
 
         /* eslint-disable-next-line */
-        onToggle !== undefined ? onToggle(widgetOpenState) : null;
+        onToggle !== undefined ? onToggle(widgetOpenState, setWidgetOpenState) : null;
     };
 
     if (fixedPosition) {
