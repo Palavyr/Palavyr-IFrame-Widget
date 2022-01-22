@@ -47,9 +47,10 @@ There are essentially two use cases:
 | IframeProps?       | React's IFrame Props -- see below                                                                      | undefined     | Additional props that are specific to the React iframe element may be passed for further customization.                                                                                                                                               |
 | autoOpen?          | number                                                                                                 | undefined     | When defined, this causes the widget to automatically open after the provided number of milliseconds                                                                                                                                                  |
 | autoOpenCallback?  | Any void function that takes no arguments, i.e. () => void                                             | undefined     | A function to call when the auto open event occurs                                                                                                                                                                                                    |
-
-
-
+| disableBounce?     | boolean                                                                                                | false         | Disable bounce animation behavior when using the default launcher componentoccurs                                                                                                                                                                     |
+| openImgProps?      | React.ImgHTMLAttributes<HTMLImageElement>                                                              | {}            | img element props passed to the default launcher image element when in the 'click to open' state occurs                                                                                                                                               |
+| closeImgProps?     | React.ImgHTMLAttributes<HTMLImageElement>                                                              | {}            | img element props passed to the default launcher image element when in the 'click to close' state occurs                                                                                                                                              |
+|                    |
 
 
 `iframeProps: React.DetailedHTMLProps<IframeHTMLAttributes<HTMLIFrameElement>, HTMLIFrameElement>`
@@ -60,8 +61,8 @@ There are essentially two use cases:
 ```
 === Tarball Details ===
 name:          palavyr-chat-widget
-version:       1.4.0
-filename:      palavyr-chat-widget-1.4.0.tgz
+version:       1.4.1
+filename:      palavyr-chat-widget-1.4.1.tgz
 package size:  22.3 kB
 unpacked size: 125.2 kB
 total files:   15
