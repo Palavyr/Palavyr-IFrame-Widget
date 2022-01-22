@@ -1,7 +1,7 @@
 {
   "name": "palavyr-chat-widget",
   "private": false,
-  "version": "1.4.2",
+  "version": "1.4.3",
   "repository": "git@github.com:Palavyr/palavyr-chat-widget.git",
   "bugs": {
     "url": "https://github.com/Palavyr/palavyr-chat-widget/issues/new/choose"

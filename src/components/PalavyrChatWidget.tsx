@@ -32,6 +32,8 @@ export interface PalavyrChatWidgetProps extends OptionalSrcProps {
     openImgProps?: React.ImgHTMLAttributes<HTMLImageElement>;
     closeImgProps?: React.ImgHTMLAttributes<HTMLImageElement>;
     launcherButtonAdditionalStyles?: React.CSSProperties;
+    onEffect?: (widgetOpenState: boolean, setWidgetOpenState: SetState<boolean>) => void;
+    onEffectDependencyArray?: any[];
 }
 
 export const PalavyrChatWidget = ({
@@ -46,6 +48,8 @@ export const PalavyrChatWidget = ({
     autoOpen,
     autoOpenCallback,
     startOpen,
+    onEffect,
+    onEffectDependencyArray,
     containerClassName = '',
     launcherOpenLabel = 'Open chat',
     launcherCloseLabel = 'Close chat',
@@ -74,6 +78,12 @@ export const PalavyrChatWidget = ({
         throw new Error("'autoOpenCallback' is not compatible with 'open' and 'setOpen'");
     if (open && setOpen && IframeProps.delay !== undefined)
         throw new Error("'IframeProps.delay' is not compatible with 'open' and 'setOpen'");
+    if (onEffect !== undefined && !onEffectDependencyArray)
+        throw new Error("'onEffectDependencyArray' is required when 'onEffect' is defined");
+
+    useEffect(() => {
+        if (onEffect) onEffect(widgetOpenState, setWidgetOpenState);
+    }, onEffectDependencyArray);
 
     useEffect(() => {
         if (!autoOpen) {

@@ -53,6 +53,10 @@ There are essentially two use cases:
 |                                 |
 | launcherButtonAdditionalStyles? | React.CSSProperties                                                                                    | {}            | Additional styles passed to the default launcher button                                                                                                                                                                                               |
 |                                 |
+| onEffect?                       | (widgetOpenState: boolean, setWidgetOpenState: SetState<boolean>) => void;                             | undefined     | Function to call on effect                                                                                                                                                                                                                            |
+|                                 |
+| onEffectDependencyArray?        | Array<any>                                                                                             | undefined     | Dependency array for the useEffect provided for the onEffect callback. required if onEffect is supplied.                                                                                                                                              |
+|                                 |
 
 `iframeProps: React.DetailedHTMLProps<IframeHTMLAttributes<HTMLIFrameElement>, HTMLIFrameElement>`
 
@@ -62,8 +66,8 @@ There are essentially two use cases:
 ```
 === Tarball Details ===
 name:          palavyr-chat-widget
-version:       1.4.2
-filename:      palavyr-chat-widget-1.4.2.tgz
+version:       1.4.3
+filename:      palavyr-chat-widget-1.4.3.tgz
 package size:  22.3 kB
 unpacked size: 125.2 kB
 total files:   15
