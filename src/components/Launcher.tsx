@@ -19,6 +19,7 @@ export interface LauncherProps {
     disableBounce?: boolean;
     openImgProps?: React.ImgHTMLAttributes<HTMLImageElement>;
     closeImgProps?: React.ImgHTMLAttributes<HTMLImageElement>;
+    launcherButtonProps?: React.ButtonHTMLAttributes<HTMLButtonElement>;
 }
 
 export const Launcher = ({
@@ -32,7 +33,8 @@ export const Launcher = ({
     alignLeft,
     disableBounce,
     openImgProps,
-    closeImgProps
+    closeImgProps,
+    launcherButtonProps
 }: LauncherProps) => {
     const { widgetOpenState } = useContext(WidgetContext);
 
@@ -45,7 +47,7 @@ export const Launcher = ({
     return (
         <button
             type="button"
-            style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}
+            style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', ...launcherButtonProps}}
             className={classNames({
                 'pcw-hide-sm': widgetOpenState === true,
                 'pcw-animation': !disableBounce && (widgetOpenState === false || widgetOpenState === undefined),

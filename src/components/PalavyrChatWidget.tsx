@@ -31,6 +31,7 @@ export interface PalavyrChatWidgetProps extends OptionalSrcProps {
     disableBounce?: boolean;
     openImgProps?: React.ImgHTMLAttributes<HTMLImageElement>;
     closeImgProps?: React.ImgHTMLAttributes<HTMLImageElement>;
+    launcherButtonProps?: React.ButtonHTMLAttributes<HTMLButtonElement>;
 }
 
 export const PalavyrChatWidget = ({
@@ -60,6 +61,7 @@ export const PalavyrChatWidget = ({
     disableBounce = false,
     openImgProps = {},
     closeImgProps = {},
+    launcherButtonProps = {},
 }: PalavyrChatWidgetProps) => {
     const [widgetOpenState, setWidgetOpenState] = useState(false);
     const [visible, _] = useState(undefined);
@@ -144,6 +146,7 @@ export const PalavyrChatWidget = ({
                 disableBounce={disableBounce}
                 openImgProps={openImgProps}
                 closeImgProps={closeImgProps}
+                launcherButtonProps={launcherButtonProps}
             />
         </WidgetContext.Provider>
     );
