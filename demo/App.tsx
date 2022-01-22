@@ -90,6 +90,7 @@ const FixedWidget = () => {
                 startOpen={false}
                 containerStyles={{ height: '540px' }}
                 autoOpen={3000}
+                launcherButtonAdditionalStyles={{ height: '75px', width: '75px' }}
             />
         </>
     );

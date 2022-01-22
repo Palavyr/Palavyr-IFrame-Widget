@@ -19,7 +19,7 @@ export interface LauncherProps {
     disableBounce?: boolean;
     openImgProps?: React.ImgHTMLAttributes<HTMLImageElement>;
     closeImgProps?: React.ImgHTMLAttributes<HTMLImageElement>;
-    launcherButtonProps?: React.ButtonHTMLAttributes<HTMLButtonElement>;
+    launcherButtonAdditionalStyles?: React.CSSProperties;
 }
 
 export const Launcher = ({
@@ -34,7 +34,7 @@ export const Launcher = ({
     disableBounce,
     openImgProps,
     closeImgProps,
-    launcherButtonProps
+    launcherButtonAdditionalStyles,
 }: LauncherProps) => {
     const { widgetOpenState } = useContext(WidgetContext);
 
@@ -47,7 +47,12 @@ export const Launcher = ({
     return (
         <button
             type="button"
-            style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', ...launcherButtonProps}}
+            style={{
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                ...launcherButtonAdditionalStyles,
+            }}
             className={classNames({
                 'pcw-hide-sm': widgetOpenState === true,
                 'pcw-animation': !disableBounce && (widgetOpenState === false || widgetOpenState === undefined),
@@ -57,11 +62,25 @@ export const Launcher = ({
             onClick={toggleChat}
         >
             {widgetOpenState ? (
-                <>{closeComponent ?? <img src={closeImg || close} className="pcw-close-launcher" alt={openLabel} {...closeImgProps} />}</>
+                <>
+                    {closeComponent ?? (
+                        <img
+                            src={closeImg || close}
+                            className="pcw-close-launcher"
+                            alt={openLabel}
+                            {...closeImgProps}
+                        />
+                    )}
+                </>
             ) : (
                 <>
                     {openComponent ?? (
-                        <img src={openImg || openLauncher} className="pcw-open-launcher" alt={closeLabel} {...openImgProps} />
+                        <img
+                            src={openImg || openLauncher}
+                            className="pcw-open-launcher"
+                            alt={closeLabel}
+                            {...openImgProps}
+                        />
                     )}
                 </>
             )}

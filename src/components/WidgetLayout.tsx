@@ -34,7 +34,7 @@ export interface WidgetLayoutProps extends OptionalSrcProps {
     disableBounce?: boolean;
     openImgProps?: React.ImgHTMLAttributes<HTMLImageElement>;
     closeImgProps?: React.ImgHTMLAttributes<HTMLImageElement>;
-    launcherButtonProps?: React.ButtonHTMLAttributes<HTMLButtonElement>;
+    launcherButtonAdditionalStyles?: React.CSSProperties;
 }
 
 export const WidgetLayout = ({
@@ -60,7 +60,7 @@ export const WidgetLayout = ({
     disableBounce,
     openImgProps,
     closeImgProps,
-    launcherButtonProps,
+    launcherButtonAdditionalStyles,
 }: WidgetLayoutProps) => {
     const { widgetOpenState, setWidgetOpenState, visible, persistState } = useContext(WidgetContext);
     const [iframeRefreshed, reloadIframe] = useState<boolean>(false);
@@ -123,7 +123,7 @@ export const WidgetLayout = ({
                             disableBounce={disableBounce}
                             openImgProps={openImgProps}
                             closeImgProps={closeImgProps}
-                            launcherButtonProps={launcherButtonProps}
+                            launcherButtonAdditionalStyles={launcherButtonAdditionalStyles}
                         />
                     )}
                 </>
