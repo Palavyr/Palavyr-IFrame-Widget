@@ -66,8 +66,8 @@ There are essentially two use cases:
 ```
 === Tarball Details ===
 name:          palavyr-chat-widget
-version:       1.4.3
-filename:      palavyr-chat-widget-1.4.3.tgz
+version:       1.5.0
+filename:      palavyr-chat-widget-1.5.0.tgz
 package size:  22.3 kB
 unpacked size: 125.2 kB
 total files:   15

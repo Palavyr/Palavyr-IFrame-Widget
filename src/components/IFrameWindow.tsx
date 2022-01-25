@@ -72,6 +72,7 @@ export const IFrameWindow = ({
                 <>
                     {frameLoading && (customSpinner ?? <DefaultSpinner />)}
                     <iframe
+                        className='pcw-iframe'
                         src={src ?? ''}
                         id={IframeProps.id ?? iframeId}
                         onLoadStart={() => {

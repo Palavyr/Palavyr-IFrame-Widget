@@ -90,7 +90,12 @@ const FixedWidget = () => {
                 startOpen={false}
                 containerStyles={{ height: '540px' }}
                 autoOpen={3000}
-                launcherButtonAdditionalStyles={{ height: '75px', width: '75px' }}
+                launcherButtonAdditionalStyles={{
+                    height: '75px',
+                    width: '75px',
+                    borderBottomLeftRadius: '7px',
+                    borderBottomRightRadius: '7px',
+                }}
             />
         </>
     );
@@ -107,6 +112,7 @@ const AlternateContentWidget = () => {
     return (
         <>
             <PalavyrChatWidget
+                disableBounce
                 containerStyles={{ height: '540px', overflow: 'hidden' }}
                 IframeProps={{ style: { border: 'none', height: '100%', width: '100%' } }}
                 fixedPosition
@@ -116,10 +122,36 @@ const AlternateContentWidget = () => {
                 startOpen
                 launcherOpenLabel="Open"
                 launcherCloseLabel="Close"
-                closeComponent={<div>Close</div>}
-                openComponent={<div>Open</div>}
+                closeComponent={<div style={{ color: 'white' }}>Close</div>}
+                openComponent={<div style={{ color: 'white' }}>Open</div>}
                 persistState={false}
+                launcherButtonAdditionalStyles={{
+                    height: '68px',
+                    width: '68px',
+                    borderRadius: '50%',
+                    borderBottomLeftRadius: '10px',
+                    background: '#454040',
+                    border: '5px solid white',
+                }}
             />
         </>
+    );
+};
+
+export const CustomLauncher = () => {
+    return (
+        <div
+            className="pcw-close-launcher pcw-animation"
+            style={{
+                borderRadius: '50%',
+                border: '2px solid white',
+                backgroundColor: '#191921',
+                height: '75px',
+                width: '75px',
+                padding: '10px',
+            }}
+        >
+            <img src="/brand-images/logo.png" alt="logo" />
+        </div>
     );
 };
